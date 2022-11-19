@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -24,35 +23,47 @@ class Ui_MainGraph
 public:
     QHBoxLayout *horizontalLayout_2;
     QHBoxLayout *horizontalLayout;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout_4;
-    QPushButton *pushButton;
+    QVBoxLayout *GraphLayout;
     QSpacerItem *horizontalSpacer;
+    QVBoxLayout *BtnLayout;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QVBoxLayout *verticalLayout_2;
 
     void setupUi(QWidget *MainGraph)
     {
         if (MainGraph->objectName().isEmpty())
             MainGraph->setObjectName(QString::fromUtf8("MainGraph"));
-        MainGraph->resize(557, 333);
+        MainGraph->resize(802, 562);
         horizontalLayout_2 = new QHBoxLayout(MainGraph);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        widget = new QWidget(MainGraph);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        verticalLayout_4 = new QVBoxLayout(widget);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        GraphLayout = new QVBoxLayout();
+        GraphLayout->setObjectName(QString::fromUtf8("GraphLayout"));
 
-        verticalLayout_4->addWidget(pushButton);
+        horizontalLayout->addLayout(GraphLayout);
 
-
-        horizontalLayout->addWidget(widget);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
+
+        BtnLayout = new QVBoxLayout();
+        BtnLayout->setObjectName(QString::fromUtf8("BtnLayout"));
+        widget = new QWidget(MainGraph);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+
+        verticalLayout->addLayout(verticalLayout_2);
+
+
+        BtnLayout->addWidget(widget);
+
+
+        horizontalLayout->addLayout(BtnLayout);
 
 
         horizontalLayout_2->addLayout(horizontalLayout);
@@ -66,7 +77,6 @@ public:
     void retranslateUi(QWidget *MainGraph)
     {
         MainGraph->setWindowTitle(QCoreApplication::translate("MainGraph", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainGraph", "PushButton", nullptr));
     } // retranslateUi
 
 };

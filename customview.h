@@ -60,12 +60,16 @@ public:
     customVex *nextVex = nullptr;//后继
     QVector <customLine*> InEdgeList;//用入边边集的第一条边的起点作为前驱
     QVector <customLine*> outEdgeList;//用出边边集的第一条边的终点作为后继
+//请以后设计类的时候，读写函数都要设计 2022.11.19
 public:
     customVex(QPointF,int state);
     void setLast(customVex *lt){lastVex = lt;}
     void setNext(customVex *nt){nextVex = nt;}
+    void setLast(){lastVex = InEdgeList}
     void addInedge(customLine *line){InEdgeList.push_back(line);}
     void addOutedge(customLine *line){outEdgeList.push_back(line);}
+    customVex* LastVex(){return this->lastVex;}//返回前驱
+    customVex* NextVex(){return this->lastVex;}//返回后继
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;

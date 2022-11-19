@@ -54,6 +54,10 @@ void CustomIcon::mouseReleaseEvent(QMouseEvent *event)
     qDebug()<<"ok +1"<<endl;
     update();
 }
+
+
+
+
 textButton::textButton(QString text, QWidget *parent, qreal ratio) :
     QWidget(parent)
 {
