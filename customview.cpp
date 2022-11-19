@@ -239,7 +239,7 @@ customLine::customLine(customVex *sourceNode, customVex *destNode):
     setAcceptedMouseButtons(nullptr);
     sourceNode->addOutedge(this);//起点加出边
     destNode->addInedge(this);//终点加入边
-    sourceNode->setNext(destNode);//前驱 后继设置
+    sourceNode->setNext(destNode,this);//前驱 后继设置
     destNode->setLast(sourceNode);
     this->adjust();//完成首次的调整
 }

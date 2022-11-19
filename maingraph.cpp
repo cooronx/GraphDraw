@@ -71,18 +71,16 @@ void MainGraph::mouseReleaseEvent(QMouseEvent *event)
     m_mousepressed = false;
 }
 
-bool MainGraph::DoGraphAnime(customVex *startvex, int type)
-{
-    if(type == 0){
-        //do Dfs
 
-    }
-    else if(type == 1){
-        //do Bfs
+bool MainGraph::GraphDfs(customVex *startvex)
+{
+    for(auto curline : startvex->edgeList()){
+        VisitingLine(curline);
+        GraphDfs(curline->destNode());
     }
 }
 
-bool MainGraph::GraphDfs(customVex *startvex)
+void MainGraph::VisitingLine(customLine *curline)
 {
 
 }

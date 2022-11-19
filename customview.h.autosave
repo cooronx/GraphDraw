@@ -69,8 +69,8 @@ public:
     void setNext(customVex *nt,customLine *nl){nextVex = nt;nextLine = nl;}
     void addInedge(customLine *line){InEdgeList.push_back(line);}
     void addOutedge(customLine *line){outEdgeList.push_back(line);}
-    QVector <customLine*> InedgeList(){return this->InedgeList();}
-    QVector <customLine*> OutedgeList(){return this->OutedgeList();}
+    QVector <customLine*> edgeList(){return this->InedgeList();}
+    //QVector <customLine*> OedgeList(){return this->OutedgeList();}
     customVex* LastVex(){return this->lastVex;}//返回前驱
     customVex* NextVex(){return this->lastVex;}//返回后继
 protected:
