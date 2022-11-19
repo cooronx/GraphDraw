@@ -6,7 +6,7 @@ MainGraph::MainGraph(QWidget *parent) :
     ui(new Ui::MainGraph)
 {
     ui->setupUi(this);
-    CustomView *view = new CustomView();
+    view = new CustomView();
     setWindowFlag(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);//无边框必备
     ui->GraphLayout->addWidget(view);
@@ -32,6 +32,11 @@ MainGraph::~MainGraph()
 void MainGraph::estConnection()
 {
     connect(closeBtn,&textButton::clicked,this,[=]{close();});
+    connect(doDfsBtn,&textButton::clicked,this,[=]{view->getCurrentSel()->setVisited(true);
+        GraphDfs(view->getCurrentSel());
+        view->getCurrentSel()->setVisited(false);
+    });
+
 }
 
 void MainGraph::paintEvent(QPaintEvent *event)
@@ -72,15 +77,22 @@ void MainGraph::mouseReleaseEvent(QMouseEvent *event)
 }
 
 
-bool MainGraph::GraphDfs(customVex *startvex)
+void MainGraph::GraphDfs(customVex *startvex)
 {
+    qDebug()<<"起始点为"<<startvex->getNodeNum()<<endl;
+    startvex->setVisited(true);
     for(auto curline : startvex->edgeList()){
-        VisitingLine(curline);
-        GraphDfs(curline->destNode());
+        if(!curline->destNode()->getVisited()){//要检测是否访问过了
+            VisitingLine(curline);
+            GraphDfs(curline->destNode());
+        }
+        else continue;
     }
 }
 
 void MainGraph::VisitingLine(customLine *curline)
 {
-
+    qDebug()<<"正在访问这条线"<<curline->sourceNode()->getNodeNum()
+           <<"     "<<curline->destNode()->getNodeNum()<<endl;
 }
+

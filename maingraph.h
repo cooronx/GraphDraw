@@ -15,6 +15,7 @@ class MainGraph : public QWidget
 {
     Q_OBJECT
 public:
+    CustomView *view;
     bool m_mousepressed = false;
     QPoint m_curmousepos;
     textButton *closeBtn = nullptr;
@@ -32,6 +33,11 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
 
+
+
+public slots:
+    void GraphDfs(customVex *startvex);
+    void VisitingLine(customLine *);//线的动画
 private:
     Ui::MainGraph *ui;
 };

@@ -81,12 +81,13 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         QTransform trans;
         customVex *cur_sel = dynamic_cast<customVex*>(myscene->itemAt(mapToScene(temp_pos),trans));
         if(cur_sel != nullptr){
-            //啥也不做
+            setCurrentSel(cur_sel);//设置当前选择项
         }
         else{
         customVex *vex = new customVex(mapToScene(temp_pos),customVex::STATE::CREATE);
         QGraphicsSimpleTextItem *showtext = new QGraphicsSimpleTextItem(vex);
-        showtext->setText("V"+QString("%1").arg(customVex::VexCount));
+        showtext->setText("V"+QString("%1").arg(customVex::VexCount));//给每个点打上标号
+        vex->setNodeNum(customVex::VexCount);
         showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(10,10));
         myscene->addItem(vex);
         }
@@ -101,6 +102,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         if(cur_sel!=nullptr){
             qDebug()<<cur_sel->pos()<<endl;
             customLine *newline = new customLine(selectitem,cur_sel);
+            this->setCurrentSel(cur_sel);
             myscene->addItem(newline);//记住新建完成以后要即时清除
             clearDraw();
             doubleClick = false;
@@ -168,7 +170,7 @@ QVariant customVex::itemChange(QGraphicsItem::GraphicsItemChange change, const Q
             for(auto edge : qAsConst(InEdgeList)){
                 edge->adjust();//入边调整
             }
-            for(auto edge : qAsConst(outEdgeList)){
+            for(auto edge : qAsConst(OutEdgeList)){
                 edge->adjust();//出边调整
             }
             break;
@@ -189,7 +191,7 @@ void customVex::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     painter->drawEllipse(-7, -7, 20, 20);
 
     QRadialGradient gradient(-3, -3, 10);
-    if (option->state & QStyle::State_Sunken) {//Sunken是按下的状态
+    if (option->state & QStyle::State_Sunken|| option->state & QStyle::State_Selected) {//Sunken是按下的状态
         gradient.setCenter(3, 3);
         gradient.setFocalPoint(3, 3);
         gradient.setColorAt(1, QColor(Qt::yellow).lighter(120));
