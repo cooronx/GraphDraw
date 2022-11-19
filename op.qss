@@ -1,0 +1,39 @@
+
+QPushButton#closeBtn{
+    border-radius:10px;
+    border-width:2px;
+    border-style:solid;
+    background-color:rgb(145,145,145);
+}
+QPushButton#closeBtn:hover{
+    background-color:red;
+}
+
+
+QPushButton#minBtn{
+    border-radius:10px;
+    border-width:2px;
+    border-style:solid;
+    background-color:rgb(128,128,128);
+}
+QPushButton#minBtn:hover{
+    background-color:yellow;
+}
+
+QPushButton#maxBtn{
+    border-radius:10px;
+    border-width:2px;
+    border-style:solid;
+    background-color:rgb(128,128,128);
+}
+QPushButton#maxBtn:hover{
+    background-color:green;
+}
+QLineEdit{
+    border: 1px solid gray;/*设置边框的粗细，以及颜色*/
+    border-radius: 10px;/*设置圆角的大小*/
+    border-color:rgb(20,196,188);
+    padding-left:10px;
+    selection-background-color: darkgray;
+
+}

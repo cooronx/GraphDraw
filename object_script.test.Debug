@@ -1,0 +1,16 @@
+debug/betteroption.o
+debug/customicon.o
+debug/customscene.o
+debug/customview.o
+debug/main.o
+debug/maingraph.o
+debug/mainwindow.o
+debug/registerdialog.o
+debug/qrc_icon.o
+debug/moc_betteroption.o
+debug/moc_customicon.o
+debug/moc_customscene.o
+debug/moc_customview.o
+debug/moc_maingraph.o
+debug/moc_mainwindow.o
+debug/moc_registerdialog.o
