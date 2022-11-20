@@ -32,10 +32,15 @@ MainGraph::~MainGraph()
 void MainGraph::estConnection()
 {
     connect(closeBtn,&textButton::clicked,this,[=]{close();});
-    connect(doDfsBtn,&textButton::clicked,this,[=]{view->getCurrentSel()->setVisited(true);
+
+    connect(doDfsBtn,&textButton::clicked,this,[=]{
+        view->getCurrentSel()->setVisited(true);
         GraphDfs(view->getCurrentSel());
-        view->getCurrentSel()->setVisited(false);
+        for(auto tempvex : view->getvexlist()){
+            tempvex->setVisited(false);
+        }
     });
+
 
 }
 

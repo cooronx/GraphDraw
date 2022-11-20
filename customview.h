@@ -20,8 +20,10 @@ class ViewLog;
 class CustomView : public QGraphicsView//重写view
 {
     Q_OBJECT
+    //2022.11.20加入了点集和边集（为什么一开始的时候没设计呢）
 private:
     QVector <customVex*> vexlist;
+    QVector <customLine*> linelist;
     QGraphicsScene *myscene;
     QPointF last_pos;
     bool pressed = false;
@@ -35,6 +37,7 @@ public:
     void clearDraw();
     void setCurrentSel(customVex *);//设置当前选择项
     customVex* getCurrentSel(){return selectitem;}
+    QVector <customVex*> getvexlist(){return this->vexlist;}
 private:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;

@@ -83,13 +83,15 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         if(cur_sel != nullptr){
             setCurrentSel(cur_sel);//设置当前选择项
         }
-        else{
-        customVex *vex = new customVex(mapToScene(temp_pos),customVex::STATE::CREATE);
-        QGraphicsSimpleTextItem *showtext = new QGraphicsSimpleTextItem(vex);
-        showtext->setText("V"+QString("%1").arg(customVex::VexCount));//给每个点打上标号
-        vex->setNodeNum(customVex::VexCount);
-        showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(10,10));
-        myscene->addItem(vex);
+        else{//在鼠标点击的地方新建一个点
+            customVex *vex = new customVex(mapToScene(temp_pos),customVex::STATE::CREATE);
+            QGraphicsSimpleTextItem *showtext = new QGraphicsSimpleTextItem(vex);
+            showtext->setText("V"+QString("%1").arg(customVex::VexCount));//给每个点打上标号
+            vex->setNodeNum(customVex::VexCount);
+            showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(10,10));
+            myscene->addItem(vex);
+            //新建的点加入点集
+            vexlist.push_back(vex);
         }
     }
 
@@ -99,15 +101,16 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         QTransform trans;
         //返回一个指向当前item的指针
         customVex *cur_sel = dynamic_cast<customVex*>(myscene->itemAt(mapToScene(temp_pos),trans));
-        if(cur_sel!=nullptr){
+        if(cur_sel!=nullptr){//选择到了一个点上
             qDebug()<<cur_sel->pos()<<endl;
             customLine *newline = new customLine(selectitem,cur_sel);
             this->setCurrentSel(cur_sel);
             myscene->addItem(newline);//记住新建完成以后要即时清除
+            linelist.push_back(newline);//新建的边加入边集
             clearDraw();
             doubleClick = false;
         }
-        else{
+        else{//选择到了空的地方
             clearDraw();
             doubleClick = false;
         }
