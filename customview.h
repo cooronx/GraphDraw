@@ -37,7 +37,10 @@ public:
     void clearDraw();
     void setCurrentSel(customVex *);//设置当前选择项
     customVex* getCurrentSel(){return selectitem;}
-    QVector <customVex*> getvexlist(){return this->vexlist;}
+    void addtoVexlist(customVex *v){this->vexlist.push_back(v);}
+    void addtoLinelist(customLine *l){this->linelist.push_back(l);}
+    QVector <customVex*>& getvexlist(){return this->vexlist;}
+    QVector <customLine*>& getlinelist(){return this->linelist;}
 private:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;

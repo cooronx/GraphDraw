@@ -89,9 +89,9 @@ void CustomView::mousePressEvent(QMouseEvent *event)
             showtext->setText("V"+QString("%1").arg(customVex::VexCount));//给每个点打上标号
             vex->setNodeNum(customVex::VexCount);
             showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(10,10));
-            myscene->addItem(vex);
+            this->scene()->addItem(vex);
             //新建的点加入点集
-            vexlist.push_back(vex);
+            this->addtoVexlist(vex);//2022.11.22 写了个成员方法进行读入更加的方便了
         }
     }
 
@@ -105,8 +105,8 @@ void CustomView::mousePressEvent(QMouseEvent *event)
             qDebug()<<cur_sel->pos()<<endl;
             customLine *newline = new customLine(selectitem,cur_sel);
             this->setCurrentSel(cur_sel);
-            myscene->addItem(newline);//记住新建完成以后要即时清除
-            linelist.push_back(newline);//新建的边加入边集
+            this->scene()->addItem(newline);//记住新建完成以后要即时清除
+            this->addtoLinelist(newline);//新建的边加入边集
             clearDraw();
             doubleClick = false;
         }

@@ -3,7 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QObject>
-
+//感觉是没时间进行实现了
 class CustomScene : public QGraphicsScene
 {
         Q_OBJECT

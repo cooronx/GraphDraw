@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainGraph_t {
-    QByteArrayData data[7];
-    char stringdata0[65];
+    QByteArrayData data[9];
+    char stringdata0[85];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,11 +38,14 @@ QT_MOC_LITERAL(2, 19, 0), // ""
 QT_MOC_LITERAL(3, 20, 10), // "customVex*"
 QT_MOC_LITERAL(4, 31, 8), // "startvex"
 QT_MOC_LITERAL(5, 40, 12), // "VisitingLine"
-QT_MOC_LITERAL(6, 53, 11) // "customLine*"
+QT_MOC_LITERAL(6, 53, 11), // "customLine*"
+QT_MOC_LITERAL(7, 65, 9), // "saveGraph"
+QT_MOC_LITERAL(8, 75, 9) // "readGraph"
 
     },
     "MainGraph\0GraphDfs\0\0customVex*\0startvex\0"
-    "VisitingLine\0customLine*"
+    "VisitingLine\0customLine*\0saveGraph\0"
+    "readGraph"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +55,7 @@ static const uint qt_meta_data_MainGraph[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -60,12 +63,16 @@ static const uint qt_meta_data_MainGraph[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x0a /* Public */,
-       5,    1,   27,    2, 0x0a /* Public */,
+       1,    1,   34,    2, 0x0a /* Public */,
+       5,    1,   37,    2, 0x0a /* Public */,
+       7,    0,   40,    2, 0x0a /* Public */,
+       8,    0,   41,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 6,    2,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -78,6 +85,8 @@ void MainGraph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         switch (_id) {
         case 0: _t->GraphDfs((*reinterpret_cast< customVex*(*)>(_a[1]))); break;
         case 1: _t->VisitingLine((*reinterpret_cast< customLine*(*)>(_a[1]))); break;
+        case 2: _t->saveGraph(); break;
+        case 3: _t->readGraph(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -123,13 +132,13 @@ int MainGraph::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

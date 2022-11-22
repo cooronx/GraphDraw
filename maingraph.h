@@ -22,6 +22,7 @@ public:
     textButton *saveBtn = nullptr;
     textButton *doBfsBtn = nullptr;
     textButton *doDfsBtn = nullptr;
+    textButton *readBtn = nullptr;
 public:
     explicit MainGraph(QWidget *parent = nullptr);
     ~MainGraph();
@@ -38,6 +39,8 @@ protected:
 public slots:
     void GraphDfs(customVex *startvex);
     void VisitingLine(customLine *);//线的动画
+    void saveGraph();//保存文件
+    void readGraph();//读入文件
 private:
     Ui::MainGraph *ui;
 };
