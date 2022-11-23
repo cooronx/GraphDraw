@@ -98,17 +98,6 @@ void betterOption::mousePressEvent(QMouseEvent *event)
 }
 
 
-void betterOption::on_pushButton_4_clicked()
-{
-    QFile fs_account("useraccount.txt");
-    fs_account.open(QIODevice::WriteOnly);
-    QFile pwd_account("userpwd.txt");
-    pwd_account.open(QIODevice::WriteOnly);//只读方式打开文件
-    fs_account.close();
-    pwd_account.close();
-    QMessageBox::StandardButton result = QMessageBox::information(this, "提示","清空成功");
-}
-
 void betterOption::clearUserFile()
 {
     QFile fs_account("useraccount.txt");
@@ -116,6 +105,7 @@ void betterOption::clearUserFile()
     QFile pwd_account("userpwd.txt");
     pwd_account.open(QIODevice::WriteOnly);
     QMessageBox msgBox;
-      msgBox.setText("用户文件已删除");
-      msgBox.exec();
+    msgBox.setWindowTitle("提示");
+    msgBox.setText("用户文件已删除");
+    msgBox.exec();
 }

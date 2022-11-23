@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QPropertyAnimation>
 #include "customview.h"
 #include "customicon.h"
 
@@ -14,7 +15,9 @@ class MainGraph;
 class MainGraph : public QWidget
 {
     Q_OBJECT
+    //2022.11.23 加入用户名，实现用户名对应的图的生成
 public:
+    QString username;
     CustomView *view;
     bool m_mousepressed = false;
     QPoint m_curmousepos;
@@ -24,7 +27,7 @@ public:
     textButton *doDfsBtn = nullptr;
     textButton *readBtn = nullptr;
 public:
-    explicit MainGraph(QWidget *parent = nullptr);
+    explicit MainGraph(QWidget *parent = nullptr,QString name = "");
     ~MainGraph();
 
     void estConnection();

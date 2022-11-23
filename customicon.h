@@ -41,7 +41,6 @@ public:
 public:
     qreal rotateAngle()const{return rotation;}
     void setrotateAngle(qreal an){
-        qDebug()<<an;
         rotation = an;
         update();
     }

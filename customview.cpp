@@ -25,7 +25,7 @@ void CustomView::drawLine(QPointF start, QPointF end)
     pen.setBrush(Qt::red);
     pen.setCapStyle(Qt::RoundCap);
     temp_line->setPen(pen);
-    myscene->addItem(temp_line);
+    this->scene()->addItem(temp_line);
     temp_line->setZValue(selectitem->zValue()-1);//控制z轴让线画在球形的下面
     m_drawingline = temp_line;
 }
@@ -33,7 +33,7 @@ void CustomView::drawLine(QPointF start, QPointF end)
 void CustomView::clearDraw()
 {
     if(m_drawingline){
-        myscene->removeItem(m_drawingline);//文档中有写到只是转交控制权给当初add的资源，并非删除
+        this->scene()->removeItem(m_drawingline);//文档中有写到只是转交控制权给当初add的资源，并非删除
         m_drawingline = nullptr;//所以要手动
     }
 }
@@ -47,7 +47,7 @@ void CustomView::mouseDoubleClickEvent(QMouseEvent *event)
 {
     QPoint temp_pos = event->pos();
     QTransform trans;
-    customVex *cur_sel = static_cast<customVex*>(myscene->itemAt(mapToScene(temp_pos),trans));
+    customVex *cur_sel = static_cast<customVex*>(this->scene()->itemAt(mapToScene(temp_pos),trans));
     if(cur_sel!=nullptr){
         setCurrentSel(cur_sel);
         doubleClick = true;
@@ -79,7 +79,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         //bool in = true;
         QPoint temp_pos = event->pos();
         QTransform trans;
-        customVex *cur_sel = dynamic_cast<customVex*>(myscene->itemAt(mapToScene(temp_pos),trans));
+        customVex *cur_sel = dynamic_cast<customVex*>(this->scene()->itemAt(mapToScene(temp_pos),trans));
         if(cur_sel != nullptr){
             setCurrentSel(cur_sel);//设置当前选择项
         }
@@ -89,6 +89,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
             showtext->setText("V"+QString("%1").arg(customVex::VexCount));//给每个点打上标号
             vex->setNodeNum(customVex::VexCount);
             showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(10,10));
+            setCurrentSel(vex);
             this->scene()->addItem(vex);
             //新建的点加入点集
             this->addtoVexlist(vex);//2022.11.22 写了个成员方法进行读入更加的方便了
@@ -100,7 +101,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         QPoint temp_pos = event->pos();
         QTransform trans;
         //返回一个指向当前item的指针
-        customVex *cur_sel = dynamic_cast<customVex*>(myscene->itemAt(mapToScene(temp_pos),trans));
+        customVex *cur_sel = dynamic_cast<customVex*>(this->scene()->itemAt(mapToScene(temp_pos),trans));
         if(cur_sel!=nullptr){//选择到了一个点上
             qDebug()<<cur_sel->pos()<<endl;
             customLine *newline = new customLine(selectitem,cur_sel);
@@ -254,7 +255,6 @@ void customLine::adjust()//完成拖动时候的线的变化
 
     QLineF line(mapFromItem(sourceVex, 0, 0), mapFromItem(destVex, 0, 0));//准备一条移动过后的线
     qreal length = line.length();
-
     prepareGeometryChange();
 
     if (length > qreal(20.)) {//如果长度合理（也就是大于半径）

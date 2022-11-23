@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     /*CustomView *view = new CustomView();
     view->show();//测试代码记得删除*/
-    MainGraph *test_graph = new MainGraph();
-    test_graph->show();
     QTimer *time = new QTimer(this);
     time->setSingleShot(true);
     time->start(10);
@@ -121,11 +119,13 @@ bool MainWindow::checklogin()
     hashcode_account->addData(account.toUtf8());
     QCryptographicHash *hashcode_pwd = new QCryptographicHash(QCryptographicHash::Md5);
     hashcode_pwd->addData(pwd.toUtf8());
+    int ac_count = 0;
     while(!fs_account.atEnd()){
         QByteArray tempac = fs_account.readLine();
         tempac = tempac.trimmed();//这里读出来有一个换行符，导致一直不对
         //qDebug()<< hashcode_account->result().toHex()<<endl;
         //qDebug()<<tempac<<endl;
+        ++ac_count;
         if(tempac == hashcode_account->result().toHex()){
             account_exist = true;//一直遍历直到找到这个账号
             break;
@@ -135,10 +135,12 @@ bool MainWindow::checklogin()
     if(!account_exist){
         return false;
     }
+    int pwd_count = 0;
     while(!pwd_account.atEnd()){
         QByteArray temppwd = pwd_account.readLine();
         temppwd = temppwd.trimmed();
-        if(temppwd == hashcode_pwd->result().toHex()){
+        ++pwd_count;
+        if(temppwd == hashcode_pwd->result().toHex() && pwd_count == ac_count){
             if(account_exist){
                 pwd_check = true;
             }
@@ -215,11 +217,16 @@ void MainWindow::on_maxButton_clicked()
 void MainWindow::on_loginBtn_clicked()
 {
     if(checklogin()){
-
-
+        qDebug()<<"准确对咯"<<endl;
+        MainGraph *Maingraph = new MainGraph(nullptr,ui->actEdit->text());
+        Maingraph->show();
+        this->setVisible(false);
     }
     else{
-
+          QMessageBox msgBox;
+          msgBox.setWindowTitle("错误");
+          msgBox.setText("账号或密码错误，请重试");
+          msgBox.exec();
     }
 }
 

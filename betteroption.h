@@ -71,7 +71,6 @@ signals:
     void CountMaxed();
 
 private slots:
-    void on_pushButton_4_clicked();
     void clearUserFile();
 private:
     Ui::betterOption *ui;

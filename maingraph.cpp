@@ -1,8 +1,9 @@
 #include "maingraph.h"
 #include "ui_maingraph.h"
 
-MainGraph::MainGraph(QWidget *parent) :
+MainGraph::MainGraph(QWidget *parent,QString name) :
     QWidget(parent),
+    username(name),
     ui(new Ui::MainGraph)
 {
     ui->setupUi(this);
@@ -100,14 +101,21 @@ void MainGraph::GraphDfs(customVex *startvex)
 
 void MainGraph::VisitingLine(customLine *curline)
 {
-    qDebug()<<"正在访问这条线"<<curline->sourceNode()->getNodeNum()
-           <<"     "<<curline->destNode()->getNodeNum()<<endl;
+
 }
 
-void MainGraph::saveGraph()
+
+
+
+
+
+
+
+void MainGraph::saveGraph()//update:加入用户名对应的文件支持
 {
     //点全部存入一个文件 按照总共多少个 坐标
-    QFile vexfile("uservex.dat");
+    QString vexfilename = username + "vex.dat";
+    QFile vexfile(vexfilename);
     vexfile.open(QIODevice::ReadWrite|QIODevice::Text);
     QTextStream vs(&vexfile);
     vs<< view->getvexlist().size()<<"\n";
@@ -116,7 +124,8 @@ void MainGraph::saveGraph()
     }
     vexfile.close();
     //将边全部读入一个文件里面 按照 总共多少条 起点的编号 终点的编号
-    QFile linefile("userline.dat");
+    QString linefilename = username + "line.dat";
+    QFile linefile(linefilename);
     linefile.open(QIODevice::ReadWrite|QIODevice::Text);
     QTextStream ls(&linefile);
     ls<< view->getlinelist().size()<<"\n";
@@ -130,7 +139,8 @@ void MainGraph::readGraph()
 {
     QGraphicsScene *newscene = new QGraphicsScene();
     view->setScene(newscene);//读入文件后，相当于直接把scene换了一个新的
-    QFile vexfile("uservex.dat");
+    QString vexfilename = username + "vex.dat";
+    QFile vexfile(vexfilename);
     vexfile.open(QIODevice::ReadOnly|QIODevice::Text);
     QTextStream vs(&vexfile);
     int tvex = 0;
@@ -151,18 +161,16 @@ void MainGraph::readGraph()
     }
     vexfile.close();
 
-    qDebug()<<view->getvexlist().size()<<endl;
-    QFile linefile("userline.dat");
+    QString linefilename = username + "line.dat";
+    QFile linefile(linefilename);
     linefile.open(QIODevice::ReadOnly|QIODevice::Text);
     QTextStream ls(&linefile);
     int tline = 0;
     tline = ls.readLine().toInt();
-    qDebug()<<tline<<endl;
     view->getlinelist().clear();
     for(int i = 1; i<=tline; ++i){
         int s,e;
         ls >> s >> e;//读入起始点和终点编号
-
         customVex *sourceNode = nullptr;
         customVex *destNode = nullptr;
         for(auto tempvex : view->getvexlist()){

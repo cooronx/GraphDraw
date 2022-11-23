@@ -104,9 +104,11 @@ signals:
 //自定义边集，这次是继承于QGraphicsLineItem，方便一点，上面那个点啥都要自己重新写
 class customLine : public QObject,public QGraphicsLineItem{
     Q_OBJECT
-public:
-    customLine(customVex *sourceNode, customVex *destNode);
+    //2022.11.23 提供一个新的属性 length
 
+public:
+
+    customLine(customVex *sourceNode, customVex *destNode);
     customVex *sourceNode() const{return sourceVex;}
     customVex *destNode() const{return destVex;}
     void adjust();
@@ -115,8 +117,8 @@ protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
 private:
+    qreal m_len;
     customVex *sourceVex, *destVex;
-
     QPointF sourcePoint;
     QPointF destPoint;
     qreal arrowSize;
