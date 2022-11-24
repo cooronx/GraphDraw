@@ -237,11 +237,16 @@ void customVex::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 
 //自定义线的实现
 
-customLine::customLine(customVex *sourceNode, customVex *destNode):
+customLine::customLine(customVex *sourceNode, customVex *destNode,int type):
     sourceVex(sourceNode),
     destVex(destNode),
     arrowSize(10)
 {
+    curPen.setWidth(5);
+    curPen.setStyle(Qt::SolidLine);
+    curPen.setCapStyle(Qt::RoundCap);
+    curPen.setColor(QColor(125, 185, 222));
+    Linetype = type;
     setAcceptedMouseButtons(nullptr);
     sourceNode->addOutedge(this);//起点加出边
     destNode->addInedge(this);//终点加入边
@@ -269,6 +274,55 @@ void customLine::adjust()//完成拖动时候的线的变化
     }
 }
 
+void customLine::drawline()
+{
+    if(line1){
+        line1->scene()->removeItem(line1);
+        line1 = nullptr;
+    }
+    QGraphicsLineItem *newLine = new QGraphicsLineItem(sP.x(), sP.y(), eP.x(), eP.y());
+    newLine->setPen(curPen);
+    newLine->setZValue(this->zValue() - 1);
+    this->scene()->addItem(newLine);
+    line1 = newLine;
+    if(arrow){
+        arrow->scene()->removeItem(arrow);
+        arrow = nullptr;
+    }
+    drawarr();
+}
+
+void customLine::setLengthrate(qreal r)
+{
+    sP = sourcePoint;
+    eP = destPoint;
+    dP = eP - sP;
+    angle = atan2(dP.y(), dP.x());
+    eP -= QPointF(5 * cos(angle), 5 * sin(angle));
+    sP += QPointF(5 * cos(angle), 5 * sin(angle));
+    dP = (eP - sP) * r;
+    eP = sP + dP;
+}
+
+void customLine::drawarr()
+{
+    QPointF leftEnd = QPointF(eP.x() - cos(angle - M_PI / 6) * arrowSize,
+                              eP.y() - sin(angle - M_PI / 6) * arrowSize);
+
+    QPointF rightEnd = QPointF(eP.x() - cos(angle + M_PI / 6) * arrowSize,
+                               eP.y() - sin(angle + M_PI / 6) * arrowSize);
+
+    QPainterPath arrowPath;
+    arrowPath.moveTo(leftEnd);
+    arrowPath.lineTo(eP);
+    arrowPath.lineTo(rightEnd);
+
+    QGraphicsPathItem* arrowItem = new QGraphicsPathItem(arrowPath);
+    arrowItem->setPen(curPen);
+    this->scene()->addItem(arrowItem);
+    arrow = arrowItem;
+}
+
 QRectF customLine::boundingRect() const
 {
     qreal penWidth = 1;
@@ -288,7 +342,53 @@ void customLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
         return;
 
     // Draw the line itself
-    painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    if(Linetype == 1){
+        painter->setPen(QPen(Qt::red, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    }
+    else painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->drawLine(line);
+
+    // 画线很简单，重点是画箭头有点难
+    double angle = std::atan2(-line.dy(), line.dx());
+
+
+    QPointF destArrowP1 = destPoint + QPointF(sin(angle - M_PI / 3) * arrowSize,
+                                              cos(angle - M_PI / 3) * arrowSize);
+    QPointF destArrowP2 = destPoint + QPointF(sin(angle - M_PI + M_PI / 3) * arrowSize,
+                                              cos(angle - M_PI + M_PI / 3) * arrowSize);
+    if(Linetype == 1){
+        painter->setBrush(Qt::red);
+    }
+    else painter->setBrush(Qt::black);
+    painter->drawPolygon(QPolygonF() << line.p1());
+    painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
+}
+
+
+
+
+
+/*testLine::testLine(customVex *sx, customVex *ex):
+    customLine(sx,ex)
+{
+    sourceVex = sx;
+    destVex = ex;
+    this->setZValue(2);
+}
+
+void testLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    QLineF line(sourceVex->scenePos(),destVex->scenePos());
+    if(qFuzzyCompare(m_len,0.)){
+       return;
+    }
+    line.setLength(m_len);
+    QPointF edgeOffset((line.dx() * 10) / m_len, (line.dy() * 10) / m_len);
+    //算出应该补偿多少，不然就边就会指到中心处去
+    //这里计算建议最好动手画一下，其实说白了就是line.dx()/length是那个角的cos值，10是半径，也就是算出x需要调整的值
+    sourcePoint = line.p1() + edgeOffset;
+    destPoint = line.p2() - edgeOffset;
+    painter->setPen(QPen(Qt::red, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     painter->drawLine(line);
 
     // 画线很简单，重点是画箭头有点难
@@ -300,7 +400,7 @@ void customLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     QPointF destArrowP2 = destPoint + QPointF(sin(angle - M_PI + M_PI / 3) * arrowSize,
                                               cos(angle - M_PI + M_PI / 3) * arrowSize);
 
-    painter->setBrush(Qt::black);
+    painter->setBrush(Qt::red);
     painter->drawPolygon(QPolygonF() << line.p1());
     painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
-}
+}*/

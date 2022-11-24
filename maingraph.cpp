@@ -101,6 +101,17 @@ void MainGraph::GraphDfs(customVex *startvex)
 
 void MainGraph::VisitingLine(customLine *curline)
 {
+    curline->setVisible(false);
+    QTimeLine *accessEffect = new QTimeLine;
+    accessEffect->setDuration(1000);
+    accessEffect->setFrameRange(0, 200);
+    QEasingCurve curve = QEasingCurve::InOutQuad;
+    accessEffect->start();
+    connect(accessEffect, &QTimeLine::frameChanged, this, [=](int frame){
+        qreal curProgress = curve.valueForProgress(frame / 200.0);
+        curline->setLengthrate(curProgress);
+        curline->drawline();
+    });
 
 }
 

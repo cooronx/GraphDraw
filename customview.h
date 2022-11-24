@@ -8,6 +8,7 @@
 #include <QGraphicsScene>
 #include <QMouseEvent>
 #include <QGraphicsEllipseItem>
+#include <QTimeLine>
 #include <QStyleOption>
 #include <QDebug>
 #include "customscene.h"
@@ -107,22 +108,60 @@ class customLine : public QObject,public QGraphicsLineItem{
     //2022.11.23 提供一个新的属性 length
 
 public:
-
-    customLine(customVex *sourceNode, customVex *destNode);
+    customLine(customVex *sourceNode, customVex *destNode,int type = 0);
     customVex *sourceNode() const{return sourceVex;}
     customVex *destNode() const{return destVex;}
     void adjust();
+    void drawline();//在这里画出遍历时候的线
+    void setLengthrate(qreal r = 1);//用这个动画来控制线长度大小的变化
+    void drawarr();
 protected:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
 private:
+    QGraphicsPathItem *arrow = nullptr;
+    QPen curPen;//遍历时候用的笔
+    int Linetype = 0;
     qreal m_len;
     customVex *sourceVex, *destVex;
     QPointF sourcePoint;
     QPointF destPoint;
     qreal arrowSize;
+
+    QGraphicsLineItem *line1 = nullptr;//画画的那条线
+
+    qreal angle = 0;
+    QPointF center;
+    QPointF sP, eP, dP;
+
 };
+
+
+/*class testLine : public customLine{
+    Q_OBJECT
+    Q_PROPERTY(qreal len READ len WRITE setLen NOTIFY lenChanged)
+public:
+    explicit testLine(customVex*,customVex*);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    qreal len(){return this->m_len;}
+    void setLen(qreal x){m_len = x;prepareGeometryChange();this->update();}
+private:
+    qreal m_len = 1.0;
+    customVex *sourceVex, *destVex;
+    qreal arrowSize;
+    QPointF sourcePoint;
+    QPointF destPoint;
+signals:
+    void lenChanged();
+};*/
+
+
+
+
+
+
+
 
 class ViewLog{
 

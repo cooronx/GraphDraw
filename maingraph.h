@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QTime>
 #include <QPropertyAnimation>
 #include "customview.h"
 #include "customicon.h"
