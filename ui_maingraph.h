@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -29,6 +30,8 @@ public:
     QWidget *widget;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_2;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidget;
 
     void setupUi(QWidget *MainGraph)
     {
@@ -56,6 +59,19 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        scrollArea = new QScrollArea(widget);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setFrameShape(QFrame::Panel);
+        scrollArea->setFrameShadow(QFrame::Sunken);
+        scrollArea->setLineWidth(2);
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidget = new QWidget();
+        scrollAreaWidget->setObjectName(QString::fromUtf8("scrollAreaWidget"));
+        scrollAreaWidget->setGeometry(QRect(0, 0, 692, 508));
+        scrollArea->setWidget(scrollAreaWidget);
+
+        verticalLayout_2->addWidget(scrollArea);
+
 
         verticalLayout->addLayout(verticalLayout_2);
 

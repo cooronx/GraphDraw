@@ -5,6 +5,10 @@
 #include <QLabel>
 #include <QTime>
 #include <QPropertyAnimation>
+#include <QScrollArea>
+#include <QVBoxLayout>
+#include <QSequentialAnimationGroup>
+#include <QQueue>
 #include "customview.h"
 #include "customicon.h"
 
@@ -12,6 +16,7 @@
 namespace Ui {
 class MainGraph;
 }
+
 
 class MainGraph : public QWidget
 {
@@ -27,11 +32,16 @@ public:
     textButton *doBfsBtn = nullptr;
     textButton *doDfsBtn = nullptr;
     textButton *readBtn = nullptr;
+    QVBoxLayout *scLayout = nullptr;
+    QScrollArea *scrolltext = nullptr;
+    //QWidget *bgWidget = nullptr;
+    QQueue <QTimeLine*> aniQueue;
 public:
     explicit MainGraph(QWidget *parent = nullptr,QString name = "");
     ~MainGraph();
 
     void estConnection();
+    void nextAni();
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -39,12 +49,14 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
 
 
-
+signals:
+    void newAni(QTimeLine*);
 public slots:
     void GraphDfs(customVex *startvex);
     void VisitingLine(customLine *);//线的动画
     void saveGraph();//保存文件
     void readGraph();//读入文件
+    void addAni(QTimeLine*);
 private:
     Ui::MainGraph *ui;
 };

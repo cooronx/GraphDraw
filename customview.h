@@ -11,6 +11,7 @@
 #include <QTimeLine>
 #include <QStyleOption>
 #include <QDebug>
+#include <QLabel>
 #include "customscene.h"
 class customVex;
 class customLine;
@@ -32,6 +33,8 @@ private:
     bool doubleClick = false;//是否双击
     customVex *selectitem = nullptr;//当前选中了啥
     QGraphicsLineItem *m_drawingline = nullptr;//当前正在画的那条线
+    bool Graphvisited = false;//判断是否经过了一次遍历
+    QVector <QGraphicsLineItem*> AniLineList;
 public:
     CustomView();
     void drawLine(QPointF start,QPointF end);
@@ -42,6 +45,9 @@ public:
     void addtoLinelist(customLine *l){this->linelist.push_back(l);}
     QVector <customVex*>& getvexlist(){return this->vexlist;}
     QVector <customLine*>& getlinelist(){return this->linelist;}
+    void setGraphvisited(bool state){this->Graphvisited = state;}
+    QVector <QGraphicsLineItem*>& getAniLineList(){return this->AniLineList;}
+    void pushAniLineList(QGraphicsLineItem* tl){this->AniLineList.push_back(tl);}
 private:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;
@@ -75,6 +81,7 @@ public:
 //请以后设计类的时候，读写函数都要设计 2022.11.19
 public:
     customVex(QPointF,int state);
+    ~customVex();
     customLine* getnextline(){return this->nextLine;}
     void setVisited(bool state){visited = state;}
     void setNodeNum(int x){nodenum = x;}
@@ -115,6 +122,7 @@ public:
     void drawline();//在这里画出遍历时候的线
     void setLengthrate(qreal r = 1);//用这个动画来控制线长度大小的变化
     void drawarr();
+    void del();
 protected:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -130,7 +138,6 @@ private:
     qreal arrowSize;
 
     QGraphicsLineItem *line1 = nullptr;//画画的那条线
-
     qreal angle = 0;
     QPointF center;
     QPointF sP, eP, dP;
@@ -163,7 +170,14 @@ signals:
 
 
 
-class ViewLog{
+class viewLog : public QLabel{
+        Q_OBJECT
+    private:
+        QFont logFont = QFont("Corbel", 12);
+        QString logText;
+        void resizeEvent(QResizeEvent *event){}
+    public:
+        viewLog(QString log, QWidget *parent = nullptr){}
 
 };
 

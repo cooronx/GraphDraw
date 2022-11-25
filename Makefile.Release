@@ -633,6 +633,9 @@ release/moc_customview.cpp: customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QMouseEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -647,6 +650,8 @@ release/moc_customview.cpp: customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qrubberband.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QDebug \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
 		customscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		release/moc_predefs.h \
@@ -757,6 +762,29 @@ release/moc_maingraph.cpp: maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfiledevice.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qvector2d.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QPropertyAnimation \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qpropertyanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qscrollarea.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qboxlayout.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayout.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgridlayout.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsequentialanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
 		customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVector \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsView \
@@ -764,14 +792,13 @@ release/moc_maingraph.cpp: maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpainter.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtextoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpen.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qscrollarea.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsScene \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QMouseEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -788,47 +815,17 @@ release/moc_maingraph.cpp: maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QDebug \
 		customscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
-		mainwindow.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMainWindow \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmainwindow.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QCryptographicHash \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcryptographichash.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPainter \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QPropertyAnimation \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qpropertyanimation.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPixmap \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QRegion \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QColor \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimer \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimer.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qbasictimer.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QHBoxLayout \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qboxlayout.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayout.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayoutitem.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgridlayout.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsBlurEffect \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicseffect.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QGradient \
 		customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPainter \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPixmap \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QIcon \
-		betteroption.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMessageBox \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
-		registerdialog.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
-		maingraph.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimer \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimer.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qbasictimer.h \
 		release/moc_predefs.h \
 		../QTNEW/5.13.2/mingw73_32/bin/moc.exe
 	D:\QTNEW\5.13.2\mingw73_32\bin\moc.exe $(DEFINES) --include D:/GraphDraw/release/moc_predefs.h -ID:/QTNEW/5.13.2/mingw73_32/mkspecs/win32-g++ -ID:/GraphDraw -ID:/QTNEW/5.13.2/mingw73_32/include -ID:/QTNEW/5.13.2/mingw73_32/include/QtSvg -ID:/QTNEW/5.13.2/mingw73_32/include/QtWidgets -ID:/QTNEW/5.13.2/mingw73_32/include/QtGui -ID:/QTNEW/5.13.2/mingw73_32/include/QtANGLE -ID:/QTNEW/5.13.2/mingw73_32/include/QtCore -ID:/QT/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -ID:/QT/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++ -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward maingraph.h -o release\moc_maingraph.cpp
@@ -995,6 +992,8 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsScene \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -1008,7 +1007,15 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		mainwindow.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsequentialanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
 		release/moc_predefs.h \
 		../QTNEW/5.13.2/mingw73_32/bin/moc.exe
 	D:\QTNEW\5.13.2\mingw73_32\bin\moc.exe $(DEFINES) --include D:/GraphDraw/release/moc_predefs.h -ID:/QTNEW/5.13.2/mingw73_32/mkspecs/win32-g++ -ID:/GraphDraw -ID:/QTNEW/5.13.2/mingw73_32/include -ID:/QTNEW/5.13.2/mingw73_32/include/QtSvg -ID:/QTNEW/5.13.2/mingw73_32/include/QtWidgets -ID:/QTNEW/5.13.2/mingw73_32/include/QtGui -ID:/QTNEW/5.13.2/mingw73_32/include/QtANGLE -ID:/QTNEW/5.13.2/mingw73_32/include/QtCore -ID:/QT/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -ID:/QT/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++ -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward mainwindow.h -o release\moc_mainwindow.cpp
@@ -1653,6 +1660,9 @@ release/customview.o: customview.cpp customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QMouseEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -1667,6 +1677,8 @@ release/customview.o: customview.cpp customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qrubberband.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QDebug \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
 		customscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\customview.o customview.cpp
@@ -1833,6 +1845,8 @@ release/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsScene \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -1846,6 +1860,15 @@ release/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsequentialanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QApplication \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qapplication.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcoreapplication.h \
@@ -1959,6 +1982,29 @@ release/maingraph.o: maingraph.cpp maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfiledevice.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qvector2d.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QPropertyAnimation \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qpropertyanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qscrollarea.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qboxlayout.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayout.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgridlayout.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsequentialanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
 		customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVector \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsView \
@@ -1966,14 +2012,13 @@ release/maingraph.o: maingraph.cpp maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpainter.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtextoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpen.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qscrollarea.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsScene \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QMouseEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -1990,46 +2035,17 @@ release/maingraph.o: maingraph.cpp maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QDebug \
 		customscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
-		mainwindow.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMainWindow \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmainwindow.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QCryptographicHash \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcryptographichash.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPainter \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QPropertyAnimation \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qpropertyanimation.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPixmap \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QRegion \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QColor \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimer \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimer.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qbasictimer.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QHBoxLayout \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qboxlayout.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayout.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlayoutitem.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgridlayout.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsBlurEffect \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicseffect.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QGradient \
 		customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPainter \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QPixmap \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QIcon \
-		betteroption.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMessageBox \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
-		registerdialog.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimer \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimer.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qbasictimer.h \
 		ui_maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVariant \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QApplication \
@@ -2039,8 +2055,8 @@ release/maingraph.o: maingraph.cpp maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdesktopwidget.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qguiapplication.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qinputmethod.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QSpacerItem \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QHBoxLayout \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\maingraph.o maingraph.cpp
 
 release/mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -2205,6 +2221,8 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsScene \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsEllipseItem \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTimeLine \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtimeline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QStyleOption \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qstyleoption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractspinbox.h \
@@ -2218,6 +2236,15 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsequentialanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
 		ui_mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVariant \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QApplication \
@@ -2231,8 +2258,7 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlineedit.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtextcursor.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtextformat.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QSpacerItem \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
 release/registerdialog.o: registerdialog.cpp registerdialog.h \

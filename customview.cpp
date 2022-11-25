@@ -72,11 +72,20 @@ void CustomView::wheelEvent(QWheelEvent *event)//实现滚轮对其缩放
 void CustomView::mousePressEvent(QMouseEvent *event)
 {
     //qDebug()<<scene()->items()<<endl;
-    //这个地方应该写dynamic_cast，因为这个bug程序崩溃了好久都没找出来
+    //这个地方应该写dynamic_cast，因为这个bug程序崩溃了好久都没找出来,c++主打的就是折磨人
     //to do，看一下dynamic_cast和static_cast的区别
 
     if(event->button() == Qt::LeftButton && !doubleClick){//处理新建的点项目
         //bool in = true;
+        if(Graphvisited){
+            for(auto x:linelist){
+                x->setVisible(true);
+                x->del();
+            }
+            getAniLineList().clear();//清空
+            this->setGraphvisited(false);
+            //this->repaint();
+        }
         QPoint temp_pos = event->pos();
         QTransform trans;
         customVex *cur_sel = dynamic_cast<customVex*>(this->scene()->itemAt(mapToScene(temp_pos),trans));
@@ -95,7 +104,6 @@ void CustomView::mousePressEvent(QMouseEvent *event)
             this->addtoVexlist(vex);//2022.11.22 写了个成员方法进行读入更加的方便了
         }
     }
-
 
     if(event->button() == Qt::LeftButton && doubleClick){//画线成功了，现在要连线
         QPoint temp_pos = event->pos();
@@ -165,6 +173,11 @@ customVex::customVex(QPointF coor,int state)
     setAcceptHoverEvents(true);
     ++VexCount;
     setZValue(-1);
+}
+
+customVex::~customVex()
+{
+    --VexCount;
 }
 
 QVariant customVex::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
@@ -285,6 +298,7 @@ void customLine::drawline()
     newLine->setZValue(this->zValue() - 1);
     this->scene()->addItem(newLine);
     line1 = newLine;
+
     if(arrow){
         arrow->scene()->removeItem(arrow);
         arrow = nullptr;
@@ -321,6 +335,14 @@ void customLine::drawarr()
     arrowItem->setPen(curPen);
     this->scene()->addItem(arrowItem);
     arrow = arrowItem;
+}
+
+void customLine::del()//删除动画边
+{
+    this->scene()->removeItem(line1);
+    this->scene()->removeItem(arrow);
+    line1 = nullptr;
+    arrow = nullptr;
 }
 
 QRectF customLine::boundingRect() const

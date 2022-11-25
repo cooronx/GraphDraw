@@ -17,13 +17,35 @@ MainGraph::MainGraph(QWidget *parent,QString name) :
     doDfsBtn = new textButton("深度优先搜索",ui->widget);
     readBtn = new textButton("读入",ui->widget);
     ui->verticalLayout_2->setAlignment(Qt::AlignVCenter);
+    scLayout = new QVBoxLayout();
+    //ui->verticalLayout_2->addWidget(scrolltext);
+    /*for(int i = 1;i<=20;++i){
+        QLabel *tt = new QLabel("这是一次测试");
+        scLayout->addWidget(tt);
+    }*/
+    ui->scrollAreaWidget->setLayout(scLayout);
+    ui->scrollArea->setStyleSheet(
+                                         "QScrollArea{border:none;background-color:transparent;}"
+                                         "QScrollArea QScrollBar:vertical{width:8px;"
+                                         "background:transparent;margin:0px,1px,0px,1px;"
+                                         "padding-top:0px;padding-bottom:0px;border-radius:4px;}"
+                                         "QScrollArea QScrollBar::handle:vertical{background:#808080;"
+                                         "border-radius:4px;}"
+                                         "QScrollArea QScrollBar::handle:vertical:hover{background:#47d5d5;"
+                                         "border-radius:4px;}"
+                                         "QScrollArea QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical{"
+                                         "background:transparent;border-radius:4px;}"//设置滑块滑动后一端槽的背景透明
+                                         "QScrollArea QScrollBar::add-line:vertical,QScrollBar::sub-line:vertical{"
+                                         "height:0px;width:0px;}");//去掉上下箭头
+            ui->scrollAreaWidget->setStyleSheet("background-color:transparent;border:none;");//设置滚动区域自带的中心窗口的背景色透明
+    //完成滚动区域的样式表的设置
     ui->verticalLayout_2->addWidget(saveBtn);
     ui->verticalLayout_2->addWidget(readBtn);
     ui->verticalLayout_2->addWidget(doBfsBtn);
     ui->verticalLayout_2->addWidget(doDfsBtn);
     ui->verticalLayout_2->addWidget(closeBtn);
     ui->widget->setFixedSize(300,600);
-    this->setFixedSize(800,600);//按钮大小初始化
+    this->setFixedSize(800,700);//按钮大小初始化
     estConnection();//信号与槽连接
 }
 
@@ -42,10 +64,23 @@ void MainGraph::estConnection()
         for(auto tempvex : view->getvexlist()){
             tempvex->setVisited(false);
         }
-    });//实现dfs
-    connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件 （未完成版本）
-    connect(readBtn,&textButton::clicked,this,[=]{readGraph();});
+        view->setGraphvisited(true);//标记整张图已经被遍历过
+        nextAni();
 
+    });//实现dfs
+    connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件
+    connect(readBtn,&textButton::clicked,this,[=]{readGraph();});//读取文件
+    connect(this,SIGNAL(newAni(QTimeLine*)),this,SLOT(addAni(QTimeLine *)));
+}
+
+void MainGraph::nextAni()
+{
+    if(aniQueue.size()>0){
+        QTimeLine *curAni = aniQueue.front();
+        aniQueue.pop_front();
+        connect(curAni,&QTimeLine::finished,this,[=](){nextAni();curAni->deleteLater();});
+        curAni->start();
+    }
 }
 
 void MainGraph::paintEvent(QPaintEvent *event)
@@ -106,16 +141,19 @@ void MainGraph::VisitingLine(customLine *curline)
     accessEffect->setDuration(1000);
     accessEffect->setFrameRange(0, 200);
     QEasingCurve curve = QEasingCurve::InOutQuad;
-    accessEffect->start();
     connect(accessEffect, &QTimeLine::frameChanged, this, [=](int frame){
         qreal curProgress = curve.valueForProgress(frame / 200.0);
         curline->setLengthrate(curProgress);
         curline->drawline();
     });
-
+    emit newAni(accessEffect);
 }
 
 
+void MainGraph::addAni(QTimeLine *curAni)
+{
+    aniQueue.push_back(curAni);
+}
 
 
 
@@ -163,9 +201,10 @@ void MainGraph::readGraph()
         vs >> x >> y >> curcount;
         customVex *newvex = new customVex(QPointF(x,y),customVex::STATE::CREATE);
         QGraphicsSimpleTextItem *showtext = new QGraphicsSimpleTextItem(newvex);
+        customVex::VexCount = tvex;
         showtext->setText("V"+QString("%1").arg(curcount));//给每个点打上标号
         showtext->setPos(showtext->mapToItem(newvex,0,0)+QPointF(10,10));
-        newvex->setNodeNum(i);//记得给一下每个点编号，坑死了
+        newvex->setNodeNum(curcount);//记得给一下每个点编号，坑死了
         view->scene()->addItem(newvex);
         view->addtoVexlist(newvex);
         vs.readLine();//跳过结尾的换行符，贼坑，花费我大量时间找bug
@@ -200,4 +239,5 @@ void MainGraph::readGraph()
 
 
 }
+
 
