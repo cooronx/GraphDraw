@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QMouseEvent>
 #include <QPropertyAnimation>
+#include <QTime>
 #include "customicon.h"
 
 namespace Ui {
@@ -51,6 +52,7 @@ private:
     QColor m_color = QColor(245,245,245);
     CustomIcon *closeBtn;
     textButton *clearBtn;
+    textButton *colorBtn;
     bool isInWidget = false;
 public:
     explicit betterOption(QWidget *parent = nullptr,int ra = 10);
@@ -69,7 +71,7 @@ private:
 signals:
     void isOpenChanged();
     void CountMaxed();
-
+    void colorChanged(int);
 private slots:
     void clearUserFile();
 private:

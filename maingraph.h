@@ -9,6 +9,7 @@
 #include <QVBoxLayout>
 #include <QSequentialAnimationGroup>
 #include <QQueue>
+#include <QMessageBox>
 #include "customview.h"
 #include "customicon.h"
 
@@ -22,6 +23,7 @@ class MainGraph : public QWidget
 {
     Q_OBJECT
     //2022.11.23 加入用户名，实现用户名对应的图的生成
+
 public:
     QString username;
     CustomView *view;
@@ -32,16 +34,19 @@ public:
     textButton *doBfsBtn = nullptr;
     textButton *doDfsBtn = nullptr;
     textButton *readBtn = nullptr;
+    textButton *clearBtn = nullptr;
     QVBoxLayout *scLayout = nullptr;
-    QScrollArea *scrolltext = nullptr;
-    //QWidget *bgWidget = nullptr;
+    int themecolor = 2;
+    QVector <viewLog*> loglist;
     QQueue <QTimeLine*> aniQueue;
 public:
-    explicit MainGraph(QWidget *parent = nullptr,QString name = "");
+    explicit MainGraph(QWidget *parent = nullptr,QString name = "",int c = 2);
     ~MainGraph();
 
-    void estConnection();
-    void nextAni();
+    void estConnection();//信号连接
+    void nextAni();//线性动画遍历
+    void readyforClose();
+    void logShowClear();
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -51,8 +56,10 @@ protected:
 
 signals:
     void newAni(QTimeLine*);
+    void logAdd(viewLog*);
 public slots:
     void GraphDfs(customVex *startvex);
+    void GraphBfs(customVex *startvex);
     void VisitingLine(customLine *);//线的动画
     void saveGraph();//保存文件
     void readGraph();//读入文件

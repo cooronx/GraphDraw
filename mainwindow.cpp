@@ -92,13 +92,13 @@ void MainWindow::init(){
         //设置页滑出完成，但是可以改进
         //10.26该写法就是错的，此时还在按下的那个事件里面
         //ui->centralwidget->setEnabled(false);//相当于自己创造了模态，
-                                             //应该有更好的办法，这个办法太蠢了
-
+        //应该有更好的办法，这个办法太蠢了
     });
-    connect(optionWidget,&betterOption::isOpenChanged,this,[=]{
-
+    connect(optionWidget,&betterOption::colorChanged,this,[=](int x){
+       setTheme(x);
+       repaint();
     });
-    qDebug()<<"ok"<<endl;
+
 }
 MainWindow::~MainWindow()
 {
@@ -160,7 +160,7 @@ void MainWindow::paintEvent(QPaintEvent *event){//重写paintevent实现圆角�
                                                 //其实就是直接画一个出来
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
-        painter.setBrush(QBrush(QGradient(static_cast<QGradient::Preset>(2))));
+        painter.setBrush(QBrush(QGradient(static_cast<QGradient::Preset>(themecolor))));
         painter.setPen(Qt::transparent);
         painter.drawRoundedRect(rect(), 20, 20);
 }
@@ -218,7 +218,7 @@ void MainWindow::on_loginBtn_clicked()
 {
     if(checklogin()){
         qDebug()<<"准确对咯"<<endl;
-        MainGraph *Maingraph = new MainGraph(nullptr,ui->actEdit->text());
+        MainGraph *Maingraph = new MainGraph(nullptr,ui->actEdit->text(),themecolor);
         Maingraph->show();
         this->setVisible(false);
     }

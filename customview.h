@@ -23,9 +23,10 @@ class CustomView : public QGraphicsView//重写view
 {
     Q_OBJECT
     //2022.11.20加入了点集和边集（为什么一开始的时候没设计呢）
+    //2022.11.26 加入清空功能
 private:
-    QVector <customVex*> vexlist;
-    QVector <customLine*> linelist;
+    QVector <customVex*> vexlist;//整个view的点集
+    QVector <customLine*> linelist;//整个view的边集
     QGraphicsScene *myscene;
     QPointF last_pos;
     bool pressed = false;
@@ -34,12 +35,15 @@ private:
     customVex *selectitem = nullptr;//当前选中了啥
     QGraphicsLineItem *m_drawingline = nullptr;//当前正在画的那条线
     bool Graphvisited = false;//判断是否经过了一次遍历
+    bool changed = false;//文件是否有改动
     QVector <QGraphicsLineItem*> AniLineList;
 public:
     CustomView();
     void drawLine(QPointF start,QPointF end);
-    void clearDraw();
+    void clearDraw();//清除掉画的那条线
     void setCurrentSel(customVex *);//设置当前选择项
+    void setChanged(bool x){changed = x;}
+    bool getChanged(){return changed;}
     customVex* getCurrentSel(){return selectitem;}
     void addtoVexlist(customVex *v){this->vexlist.push_back(v);}
     void addtoLinelist(customLine *l){this->linelist.push_back(l);}
@@ -48,6 +52,8 @@ public:
     void setGraphvisited(bool state){this->Graphvisited = state;}
     QVector <QGraphicsLineItem*>& getAniLineList(){return this->AniLineList;}
     void pushAniLineList(QGraphicsLineItem* tl){this->AniLineList.push_back(tl);}
+    void clearAni();//清空动画序列，记得每次都要调用
+    void clearAll();
 private:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;
@@ -91,7 +97,7 @@ public:
     void setNext(customVex *nt,customLine *nl){nextVex = nt;nextLine = nl;}
     void addInedge(customLine *line){InEdgeList.push_back(line);}
     void addOutedge(customLine *line){OutEdgeList.push_back(line);}
-    QVector <customLine*> edgeList(){return this->OutEdgeList;}
+    QVector <customLine*> edgeList(){return this->OutEdgeList;}//返回出边集
     //QVector <customLine*> OedgeList(){return this->OutedgeList();}
     customVex* LastVex(){return this->lastVex;}//返回前驱
     customVex* NextVex(){return this->lastVex;}//返回后继
@@ -122,7 +128,7 @@ public:
     void drawline();//在这里画出遍历时候的线
     void setLengthrate(qreal r = 1);//用这个动画来控制线长度大小的变化
     void drawarr();
-    void del();
+    void del();//删除动画边
 protected:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -169,15 +175,15 @@ signals:
 
 
 
-
+//用来展示遍历的数据
 class viewLog : public QLabel{
         Q_OBJECT
     private:
         QFont logFont = QFont("Corbel", 12);
         QString logText;
-        void resizeEvent(QResizeEvent *event){}
+        void resizeEvent(QResizeEvent *event);
     public:
-        viewLog(QString log, QWidget *parent = nullptr){}
+        viewLog(QString log, QWidget *parent = nullptr);
 
 };
 

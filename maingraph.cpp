@@ -1,9 +1,10 @@
 #include "maingraph.h"
 #include "ui_maingraph.h"
 
-MainGraph::MainGraph(QWidget *parent,QString name) :
+MainGraph::MainGraph(QWidget *parent,QString name,int c) :
     QWidget(parent),
     username(name),
+    themecolor(c),
     ui(new Ui::MainGraph)
 {
     ui->setupUi(this);
@@ -16,8 +17,10 @@ MainGraph::MainGraph(QWidget *parent,QString name) :
     doBfsBtn = new textButton("广度优先搜索",ui->widget);
     doDfsBtn = new textButton("深度优先搜索",ui->widget);
     readBtn = new textButton("读入",ui->widget);
+    clearBtn = new textButton("清空",ui->widget);
     ui->verticalLayout_2->setAlignment(Qt::AlignVCenter);
     scLayout = new QVBoxLayout();
+    scLayout->setMargin(2);
     //ui->verticalLayout_2->addWidget(scrolltext);
     /*for(int i = 1;i<=20;++i){
         QLabel *tt = new QLabel("这是一次测试");
@@ -43,9 +46,11 @@ MainGraph::MainGraph(QWidget *parent,QString name) :
     ui->verticalLayout_2->addWidget(readBtn);
     ui->verticalLayout_2->addWidget(doBfsBtn);
     ui->verticalLayout_2->addWidget(doDfsBtn);
+    ui->verticalLayout_2->addWidget(clearBtn);
     ui->verticalLayout_2->addWidget(closeBtn);
     ui->widget->setFixedSize(300,600);
     this->setFixedSize(800,700);//按钮大小初始化
+    readGraph();
     estConnection();//信号与槽连接
 }
 
@@ -56,38 +61,122 @@ MainGraph::~MainGraph()
 
 void MainGraph::estConnection()
 {
-    connect(closeBtn,&textButton::clicked,this,[=]{close();});
+    connect(closeBtn,&textButton::clicked,this,[=]{
+        if(view->getChanged()){
+            readyforClose();
+        }
+        else{
+            close();//没有改动或改动已经被保存，直接退出
+        }
+    });//关闭
+    connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件
+    connect(readBtn,&textButton::clicked,this,[=]{readGraph();});//读取文件
+    connect(clearBtn,&textButton::clicked,this,[=](){
+       view->clearAll();
+       view->setChanged(true);
+    });//清空
 
+    //update: 记得在每次循环开始前，清空一下整个动画序列，清空一下遍历的记录
     connect(doDfsBtn,&textButton::clicked,this,[=]{
+        loglist.clear();
+        logShowClear();//清空scLayout布局内的所有元素
+        view->clearAni();
         view->getCurrentSel()->setVisited(true);
+        viewLog *log = new viewLog(QString("在%1号点执行深度优先搜索").arg(view->getCurrentSel()->getNodeNum()));
+        emit logAdd(log);
         GraphDfs(view->getCurrentSel());
         for(auto tempvex : view->getvexlist()){
             tempvex->setVisited(false);
         }
         view->setGraphvisited(true);//标记整张图已经被遍历过
+        viewLog *curLog = loglist.front();
+        loglist.pop_front();
+        scLayout->addWidget(curLog);//先把第一句先输出
         nextAni();
 
     });//实现dfs
-    connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件
-    connect(readBtn,&textButton::clicked,this,[=]{readGraph();});//读取文件
-    connect(this,SIGNAL(newAni(QTimeLine*)),this,SLOT(addAni(QTimeLine *)));
+    connect(doBfsBtn,&textButton::clicked,this,[=]{
+        loglist.clear();
+        logShowClear();//清空scLayout布局内的所有元素
+        view->clearAni();
+        view->getCurrentSel()->setVisited(true);
+        viewLog *log = new viewLog(QString("在%1号点执行广度优先搜索").arg(view->getCurrentSel()->getNodeNum()));
+        emit logAdd(log);
+        GraphBfs(view->getCurrentSel());
+        for(auto tempvex : view->getvexlist()){
+            tempvex->setVisited(false);
+        }
+        view->setGraphvisited(true);//标记整张图已经被遍历过
+        viewLog *curLog = loglist.front();
+        loglist.pop_front();
+        scLayout->addWidget(curLog);//先把第一句先输出
+        nextAni();
+    });//实现bfs
+    connect(this,&MainGraph::logAdd,this,[=](viewLog *text){
+        loglist.push_back(text);
+    });//将刚刚遍历的日志输入进去
+    connect(this,SIGNAL(newAni(QTimeLine*)),this,SLOT(addAni(QTimeLine*)));
 }
 
-void MainGraph::nextAni()
+void MainGraph::nextAni()//实现前一个动画结束，才能执行下一个，日志同样的道理
 {
+
     if(aniQueue.size()>0){
         QTimeLine *curAni = aniQueue.front();
+        viewLog *curLog = loglist.front();
         aniQueue.pop_front();
-        connect(curAni,&QTimeLine::finished,this,[=](){nextAni();curAni->deleteLater();});
+        loglist.pop_front();
+        connect(curAni,&QTimeLine::finished,this,[=](){scLayout->addWidget(curLog);nextAni();curAni->deleteLater();});
         curAni->start();
     }
+}
+
+void MainGraph::readyforClose()
+{
+    QMessageBox msgBox;
+    msgBox.setText("你有未保存的修改");
+    msgBox.setInformativeText("你是否要保留修改？");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    msgBox.setButtonText(QMessageBox::Save,"保存");
+    msgBox.setButtonText(QMessageBox::Discard,"不保存");
+    msgBox.setButtonText(QMessageBox::Cancel,"取消");
+    int ret = msgBox.exec();
+    switch (ret) {
+        case QMessageBox::Save : {
+            saveGraph();
+            close();
+            break;
+        }
+        case QMessageBox::Discard :{
+            //啥也不干
+            close();
+            break;
+        }
+        default:break;
+    }
+}
+
+void MainGraph::logShowClear()
+{
+    QLayoutItem *child;
+     while ((child = scLayout->takeAt(0)) != 0)
+     {
+            //setParent为NULL，防止删除之后界面不消失
+            if(child->widget())
+            {
+                child->widget()->setParent(NULL);
+            }
+
+            delete child;
+     }
 }
 
 void MainGraph::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
-    painter.setBrush(QBrush(QGradient(static_cast<QGradient::Preset>(2))));
+    painter.setBrush(QBrush(QGradient(static_cast<QGradient::Preset>(themecolor))));
     painter.setPen(Qt::transparent);
     painter.drawRoundedRect(rect(), 20, 20);
 }
@@ -134,7 +223,24 @@ void MainGraph::GraphDfs(customVex *startvex)
     }
 }
 
-void MainGraph::VisitingLine(customLine *curline)
+void MainGraph::GraphBfs(customVex *startvex)
+{
+     QQueue <customVex*> bfsq;
+     bfsq.push_back(startvex);
+     while(!bfsq.empty()){
+         customVex *head = bfsq.head();
+         bfsq.pop_front();
+         for(auto l : head->edgeList()){
+             if(!l->destNode()->getVisited()){
+                 VisitingLine(l);
+                 l->destNode()->setVisited(true);
+                 bfsq.push_back(l->destNode());
+             }
+         }
+     }
+}
+
+void MainGraph::VisitingLine(customLine *curline)//访问线时候的函数
 {
     curline->setVisible(false);
     QTimeLine *accessEffect = new QTimeLine;
@@ -146,7 +252,9 @@ void MainGraph::VisitingLine(customLine *curline)
         curline->setLengthrate(curProgress);
         curline->drawline();
     });
+    viewLog *log = new viewLog(QString("从%1号点到%2号点").arg(curline->sourceNode()->getNodeNum()).arg(curline->destNode()->getNodeNum()));
     emit newAni(accessEffect);
+    emit logAdd(log);
 }
 
 
@@ -157,11 +265,9 @@ void MainGraph::addAni(QTimeLine *curAni)
 
 
 
-
-
-
 void MainGraph::saveGraph()//update:加入用户名对应的文件支持
 {
+    view->setChanged(false);//设置改变已经被记录
     //点全部存入一个文件 按照总共多少个 坐标
     QString vexfilename = username + "vex.dat";
     QFile vexfile(vexfilename);

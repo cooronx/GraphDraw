@@ -36,10 +36,13 @@ private:
     QPoint m_curmousepos;
     bool ismaxed = false;
     int optioncount = 0;
+    int themecolor = 2;
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    bool checklogin();
+    bool checklogin();//登录检查函数
+    void setTheme(int x){themecolor = x;}
+    int getTheme(){return themecolor;}
 private slots:
     void on_closebutton_clicked();
     void on_minButton_clicked();

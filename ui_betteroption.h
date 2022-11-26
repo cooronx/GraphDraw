@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -23,7 +22,6 @@ class Ui_betterOption
 public:
     QHBoxLayout *horizontalLayout_6;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
 
     void setupUi(QWidget *betterOption)
     {
@@ -35,12 +33,6 @@ public:
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        pushButton = new QPushButton(betterOption);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(230, 230, 250);"));
-
-        verticalLayout->addWidget(pushButton);
-
 
         horizontalLayout_6->addLayout(verticalLayout);
 
@@ -53,7 +45,6 @@ public:
     void retranslateUi(QWidget *betterOption)
     {
         betterOption->setWindowTitle(QCoreApplication::translate("betterOption", "Form", nullptr));
-        pushButton->setText(QCoreApplication::translate("betterOption", "PushButton", nullptr));
     } // retranslateUi
 
 };

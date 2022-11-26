@@ -43,6 +43,23 @@ void CustomView::setCurrentSel(customVex *cur_sel)
     selectitem = cur_sel;
 }
 
+void CustomView::clearAni()
+{
+    for(auto l:linelist){
+        l->del();
+        l->setVisible(true);//删除所有动画边，并且把原来的边显示回来
+    }
+}
+
+void CustomView::clearAll()
+{
+    clearAni();
+    this->scene()->clear();
+    vexlist.clear();
+    linelist.clear();
+}
+
+
 void CustomView::mouseDoubleClickEvent(QMouseEvent *event)
 {
     QPoint temp_pos = event->pos();
@@ -74,14 +91,11 @@ void CustomView::mousePressEvent(QMouseEvent *event)
     //qDebug()<<scene()->items()<<endl;
     //这个地方应该写dynamic_cast，因为这个bug程序崩溃了好久都没找出来,c++主打的就是折磨人
     //to do，看一下dynamic_cast和static_cast的区别
-
+    changed = true;
     if(event->button() == Qt::LeftButton && !doubleClick){//处理新建的点项目
         //bool in = true;
         if(Graphvisited){
-            for(auto x:linelist){
-                x->setVisible(true);
-                x->del();
-            }
+            this->clearAni();
             getAniLineList().clear();//清空
             this->setGraphvisited(false);
             //this->repaint();
@@ -386,6 +400,20 @@ void customLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
 }
 
+viewLog::viewLog(QString log, QWidget *parent) :
+    QLabel(parent)
+{
+    logText = log;
+    this->setFont(logFont);
+    this->setText(log);
+    this->setFixedHeight(QFontMetrics(logFont).lineSpacing());
+}
+
+void viewLog::resizeEvent(QResizeEvent *event){
+    QString elideText = QFontMetrics(logFont).elidedText(logText, Qt::ElideRight, this->width() - 5);
+    this->setText(elideText);
+    this->show();
+}
 
 
 

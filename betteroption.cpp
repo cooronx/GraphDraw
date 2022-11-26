@@ -22,10 +22,18 @@ betterOption::betterOption(QWidget *parent,int ra) :
     closeBtn->move(this->width()-30,10);*/
     closeBtn = new CustomIcon(":/back.png",m_color,this);
     closeBtn->move(this->width()-40,10);
-
     clearBtn = new textButton("删除用户文件",this);
+    colorBtn = new textButton("随机主题颜色",this);
     ui->verticalLayout->addWidget(clearBtn);
+    ui->verticalLayout->addWidget(colorBtn);
     connect(clearBtn,&textButton::clicked,this,[=]{clearUserFile();});
+    connect(colorBtn,&textButton::clicked,this,[=]{
+        QTime time;
+        time= QTime::currentTime();
+        qsrand(time.msec()+time.second()*1000);//生成1-65的随机数
+        int n = qrand() % 179;
+        emit colorChanged(n);
+    });
     connect(closeBtn,&QPushButton::clicked,this,[=](){
         //绑定动画
 
