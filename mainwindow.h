@@ -31,6 +31,7 @@ class MainWindow : public QMainWindow
 
 
 private:
+    QMenuBar *bar = nullptr;
     int cornerradius = 20;//边框的弧度
     bool m_mousepressed = false;
     QPoint m_curmousepos;

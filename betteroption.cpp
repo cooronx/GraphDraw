@@ -24,6 +24,10 @@ betterOption::betterOption(QWidget *parent,int ra) :
     closeBtn->move(this->width()-40,10);
     clearBtn = new textButton("删除用户文件",this);
     colorBtn = new textButton("随机主题颜色",this);
+    QFont m_font("Corbel Light", 20);
+    m_font.setPixelSize(30);//解决不同分辨率下字体显示不全的问题
+    clearBtn->setFont(m_font);
+    closeBtn->setFont(m_font);
     ui->verticalLayout->addWidget(clearBtn);
     ui->verticalLayout->addWidget(colorBtn);
     connect(clearBtn,&textButton::clicked,this,[=]{clearUserFile();});

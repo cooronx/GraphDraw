@@ -18,6 +18,14 @@ MainGraph::MainGraph(QWidget *parent,QString name,int c) :
     doDfsBtn = new textButton("深度优先搜索",ui->widget);
     readBtn = new textButton("读入",ui->widget);
     clearBtn = new textButton("清空",ui->widget);
+    QFont m_font("Corbel Light", 20);
+    m_font.setPixelSize(30);//解决不同分辨率下字体显示不全的问题
+    closeBtn->setFont(m_font);
+    clearBtn->setFont(m_font);
+    doBfsBtn->setFont(m_font);
+    doDfsBtn->setFont(m_font);
+    readBtn->setFont(m_font);
+    saveBtn->setFont(m_font);
     ui->verticalLayout_2->setAlignment(Qt::AlignVCenter);
     scLayout = new QVBoxLayout();
     scLayout->setMargin(2);

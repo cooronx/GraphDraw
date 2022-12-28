@@ -56,6 +56,7 @@ void MainWindow::init(){
     //这里就是标题栏
     QFont fontTitle("Corbel Light", 20);
     QLabel *titlelabel = new QLabel("START");
+    fontTitle.setPixelSize(30);//解决不同分辨率下字体显示不全的问题
     titlelabel->setFont(fontTitle);
     ui->titleLayout->insertWidget(0,titlelabel);
     ui->titleLayout->setAlignment(Qt::AlignHCenter);
