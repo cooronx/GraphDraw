@@ -145,7 +145,7 @@ bool MainWindow::checklogin()
             if(account_exist){
                 pwd_check = true;
             }
-            //
+            //2022.11.30 密码的修改
             break;
         }
     }
@@ -158,7 +158,7 @@ bool MainWindow::checklogin()
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){//重写paintevent实现圆角矩形，
-                                                //其实就是直接画一个出来
+        Q_UNUSED(event)                                        //其实就是直接画一个出来
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
         painter.setBrush(QBrush(QGradient(static_cast<QGradient::Preset>(themecolor))));
@@ -188,7 +188,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event){
     }
 }
 void MainWindow::mouseReleaseEvent(QMouseEvent *event){
-    Q_UNUSED(event);
+    Q_UNUSED(event)
     m_mousepressed = false;
 }
 

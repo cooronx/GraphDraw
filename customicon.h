@@ -1,6 +1,6 @@
 #ifndef CUSTOMICON_H
 #define CUSTOMICON_H
-
+#include <qopenglwidget.h>
 #include <QObject>
 #include <QEnterEvent>
 #include <QLabel>
@@ -66,7 +66,7 @@ private:
     bool mousePressed;
 
     void enterEvent(QEvent *event);//记住在写这个的时候看一下这个版本的文档，每个版本这个参数都不一样
-    void leaveEvent(QEvent *event);
+    void leaveEvent(QEvent *event);//再重写函数时最好加上override来打开编译器警告，但是我这里懒得写了
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void resizeEvent(QResizeEvent *event);

@@ -17,7 +17,7 @@
 namespace Ui {
 class MainGraph;
 }
-
+// this is a test
 
 class MainGraph : public QWidget
 {

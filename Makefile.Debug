@@ -269,7 +269,21 @@ debug/moc_betteroption.cpp: betteroption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
@@ -294,10 +308,9 @@ debug/moc_betteroption.cpp: betteroption.h \
 	D:\QTNEW\5.13.2\mingw73_32\bin\moc.exe $(DEFINES) --include D:/GraphDraw/debug/moc_predefs.h -ID:/QTNEW/5.13.2/mingw73_32/mkspecs/win32-g++ -ID:/GraphDraw -ID:/QTNEW/5.13.2/mingw73_32/include -ID:/QTNEW/5.13.2/mingw73_32/include/QtSvg -ID:/QTNEW/5.13.2/mingw73_32/include/QtWidgets -ID:/QTNEW/5.13.2/mingw73_32/include/QtGui -ID:/QTNEW/5.13.2/mingw73_32/include/QtANGLE -ID:/QTNEW/5.13.2/mingw73_32/include/QtCore -ID:/QT/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -ID:/QT/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++ -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -ID:/QT/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward betteroption.h -o debug\moc_betteroption.cpp
 
 debug/moc_customicon.cpp: customicon.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobject.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobjectdefs.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qnamespace.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtguiglobal.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qglobal.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qconfig.h \
@@ -319,7 +332,16 @@ debug/moc_customicon.cpp: customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmutex.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qnumeric.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qversiontagging.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtgui-config.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qnamespace.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobject.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qstring.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qchar.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qbytearray.h \
@@ -346,43 +368,10 @@ debug/moc_customicon.cpp: customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvarlengtharray.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcontainerfwd.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobject_impl.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qevent.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtguiglobal.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtgui-config.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qregion.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qrect.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmargins.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsize.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatastream.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qiodevice.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qkeysequence.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariant.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmap.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdebug.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qhash.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtextstream.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qlocale.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qshareddata.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qset.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcontiguouscache.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurl.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurlquery.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfile.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfiledevice.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qvector2d.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtouchdevice.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qwidget.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpaintdevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qrect.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsize.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpalette.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qcolor.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qrgb.h \
@@ -390,18 +379,55 @@ debug/moc_customicon.cpp: customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qbrush.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qmatrix.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpolygon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qregion.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatastream.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qiodevice.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtransform.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpainterpath.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qimage.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpixelformat.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpixmap.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qshareddata.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qhash.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qfont.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qfontmetrics.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qfontinfo.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qsizepolicy.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qcursor.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qkeysequence.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qevent.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariant.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmap.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdebug.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtextstream.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qlocale.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qset.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurlquery.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfile.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfiledevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qvector2d.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
@@ -785,6 +811,9 @@ debug/moc_maingraph.cpp: maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMessageBox \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVector \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsView \
@@ -816,6 +845,18 @@ debug/moc_maingraph.cpp: maingraph.h \
 		customscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
@@ -968,9 +1009,21 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicseffect.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QGradient \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
@@ -980,6 +1033,8 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		registerdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
 		customview.h \
@@ -1007,8 +1062,6 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
@@ -1287,7 +1340,21 @@ debug/betteroption.o: betteroption.cpp betteroption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
@@ -1325,10 +1392,9 @@ debug/betteroption.o: betteroption.cpp betteroption.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\betteroption.o betteroption.cpp
 
 debug/customicon.o: customicon.cpp customicon.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobject.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobjectdefs.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qnamespace.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtguiglobal.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qglobal.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qconfig.h \
@@ -1350,7 +1416,16 @@ debug/customicon.o: customicon.cpp customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmutex.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qnumeric.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qversiontagging.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtgui-config.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qnamespace.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobject.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qstring.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qchar.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qbytearray.h \
@@ -1377,43 +1452,10 @@ debug/customicon.o: customicon.cpp customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvarlengtharray.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcontainerfwd.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qobject_impl.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qevent.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtguiglobal.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtgui-config.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qregion.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qrect.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmargins.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsize.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatastream.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qiodevice.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qkeysequence.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariant.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmap.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdebug.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qhash.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtextstream.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qlocale.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qshareddata.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qset.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcontiguouscache.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurl.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurlquery.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfile.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfiledevice.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qvector2d.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtouchdevice.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qwidget.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpaintdevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qrect.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsize.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpalette.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qcolor.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qrgb.h \
@@ -1421,18 +1463,55 @@ debug/customicon.o: customicon.cpp customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qbrush.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qmatrix.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpolygon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qregion.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatastream.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qiodevice.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qline.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtransform.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpainterpath.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qimage.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpixelformat.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qpixmap.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qshareddata.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qhash.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qfont.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qfontmetrics.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qfontinfo.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qsizepolicy.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/qcursor.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qkeysequence.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qevent.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariant.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qmap.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdebug.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qtextstream.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qlocale.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qset.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qurlquery.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfile.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qfiledevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qvector2d.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QLabel \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qlabel.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qframe.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
@@ -1821,9 +1900,21 @@ debug/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicseffect.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QGradient \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
@@ -1833,6 +1924,8 @@ debug/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		registerdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
 		customview.h \
@@ -1860,8 +1953,6 @@ debug/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
@@ -2005,6 +2096,9 @@ debug/maingraph.o: maingraph.cpp maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMessageBox \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVector \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsView \
@@ -2036,6 +2130,18 @@ debug/maingraph.o: maingraph.cpp maingraph.h \
 		customscene.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
@@ -2197,9 +2303,21 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qgraphicseffect.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QGradient \
 		customicon.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qopenglwidget.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/QSurfaceFormat \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qsurfaceformat.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengl.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qt_windows.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES3/gl3platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/KHR/khrplatform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtANGLE/GLES2/gl2platform.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopengles2ext.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtGui/qopenglext.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
-		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QWidget \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QPushButton \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qabstractbutton.h \
@@ -2209,6 +2327,8 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		registerdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
 		customview.h \
@@ -2236,8 +2356,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
