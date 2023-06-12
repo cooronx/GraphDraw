@@ -63,6 +63,7 @@ signals:
 public slots:
     void GraphDfs(customVex *startvex);
     int Kruskal();
+    int Prim();
     void VisitingLine(customLine *);//线的动画
     void saveGraph();//保存文件
     void readGraph();//读入文件

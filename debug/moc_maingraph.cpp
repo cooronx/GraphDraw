@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainGraph_t {
-    QByteArrayData data[15];
-    char stringdata0[134];
+    QByteArrayData data[16];
+    char stringdata0[139];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,16 +42,17 @@ QT_MOC_LITERAL(6, 45, 8), // "GraphDfs"
 QT_MOC_LITERAL(7, 54, 10), // "customVex*"
 QT_MOC_LITERAL(8, 65, 8), // "startvex"
 QT_MOC_LITERAL(9, 74, 7), // "Kruskal"
-QT_MOC_LITERAL(10, 82, 12), // "VisitingLine"
-QT_MOC_LITERAL(11, 95, 11), // "customLine*"
-QT_MOC_LITERAL(12, 107, 9), // "saveGraph"
-QT_MOC_LITERAL(13, 117, 9), // "readGraph"
-QT_MOC_LITERAL(14, 127, 6) // "addAni"
+QT_MOC_LITERAL(10, 82, 4), // "Prim"
+QT_MOC_LITERAL(11, 87, 12), // "VisitingLine"
+QT_MOC_LITERAL(12, 100, 11), // "customLine*"
+QT_MOC_LITERAL(13, 112, 9), // "saveGraph"
+QT_MOC_LITERAL(14, 122, 9), // "readGraph"
+QT_MOC_LITERAL(15, 132, 6) // "addAni"
 
     },
     "MainGraph\0newAni\0\0QTimeLine*\0logAdd\0"
     "viewLog*\0GraphDfs\0customVex*\0startvex\0"
-    "Kruskal\0VisitingLine\0customLine*\0"
+    "Kruskal\0Prim\0VisitingLine\0customLine*\0"
     "saveGraph\0readGraph\0addAni"
 };
 #undef QT_MOC_LITERAL
@@ -62,7 +63,7 @@ static const uint qt_meta_data_MainGraph[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,16 +71,17 @@ static const uint qt_meta_data_MainGraph[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x06 /* Public */,
-       4,    1,   57,    2, 0x06 /* Public */,
+       1,    1,   59,    2, 0x06 /* Public */,
+       4,    1,   62,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   60,    2, 0x0a /* Public */,
-       9,    0,   63,    2, 0x0a /* Public */,
-      10,    1,   64,    2, 0x0a /* Public */,
-      12,    0,   67,    2, 0x0a /* Public */,
-      13,    0,   68,    2, 0x0a /* Public */,
-      14,    1,   69,    2, 0x0a /* Public */,
+       6,    1,   65,    2, 0x0a /* Public */,
+       9,    0,   68,    2, 0x0a /* Public */,
+      10,    0,   69,    2, 0x0a /* Public */,
+      11,    1,   70,    2, 0x0a /* Public */,
+      13,    0,   73,    2, 0x0a /* Public */,
+      14,    0,   74,    2, 0x0a /* Public */,
+      15,    1,   75,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -88,7 +90,8 @@ static const uint qt_meta_data_MainGraph[] = {
  // slots: parameters
     QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Int,
-    QMetaType::Void, 0x80000000 | 11,    2,
+    QMetaType::Int,
+    QMetaType::Void, 0x80000000 | 12,    2,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -107,10 +110,12 @@ void MainGraph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 2: _t->GraphDfs((*reinterpret_cast< customVex*(*)>(_a[1]))); break;
         case 3: { int _r = _t->Kruskal();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 4: _t->VisitingLine((*reinterpret_cast< customLine*(*)>(_a[1]))); break;
-        case 5: _t->saveGraph(); break;
-        case 6: _t->readGraph(); break;
-        case 7: _t->addAni((*reinterpret_cast< QTimeLine*(*)>(_a[1]))); break;
+        case 4: { int _r = _t->Prim();
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+        case 5: _t->VisitingLine((*reinterpret_cast< customLine*(*)>(_a[1]))); break;
+        case 6: _t->saveGraph(); break;
+        case 7: _t->readGraph(); break;
+        case 8: _t->addAni((*reinterpret_cast< QTimeLine*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -130,14 +135,14 @@ void MainGraph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< viewLog* >(); break;
             }
             break;
-        case 4:
+        case 5:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< customLine* >(); break;
             }
             break;
-        case 7:
+        case 8:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -193,13 +198,13 @@ int MainGraph::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

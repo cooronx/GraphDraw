@@ -2,7 +2,11 @@
 #include "ui_maingraph.h"
 
 int f[10005];
-
+int dist[10005];
+bool book[10005];
+int g[105][105];
+int oriG[105][105];
+const int INF = 0x3f3f3f3f;
 
 
 bool cmp(const customLine* a,const customLine* b){
@@ -27,7 +31,8 @@ MainGraph::MainGraph(QWidget *parent,QString name,int c) :
     readBtn = new textButton("读入",ui->widget);
     clearBtn = new textButton("清空",ui->widget);
     saveBtn->hide();
-
+    clearBtn->hide();
+    readBtn->hide();
     QFont m_font("Corbel Light", 20);
     m_font.setPixelSize(30);//解决不同分辨率下字体显示不全的问题
     closeBtn->setFont(m_font);
@@ -99,17 +104,17 @@ void MainGraph::estConnection()
         loglist.clear();
         logShowClear();//清空scLayout布局内的所有元素
         view->clearAni();
-        view->getCurrentSel()->setVisited(true);
-        viewLog *log = new viewLog(QString("在%1号点执行深度优先搜索").arg(view->getCurrentSel()->getNodeNum()));
-        emit logAdd(log);
-        GraphDfs(view->getCurrentSel());
-        for(auto tempvex : view->getvexlist()){
-            tempvex->setVisited(false);
-        }
-        view->setGraphvisited(true);//标记整张图已经被遍历过
+        viewLog *headLog = new viewLog("开始Prim算法");
+        emit logAdd(headLog);
+        int ans = Prim();
+        viewLog *ansLog = new viewLog(QString("最小生成树的值为%1").arg(ans));
+        emit logAdd(ansLog);
         viewLog *curLog = loglist.front();
         loglist.pop_front();
-        scLayout->addWidget(curLog);//先把第一句先输出
+        scLayout->addWidget(curLog);
+        curLog = loglist.front();
+        loglist.pop_front();
+        scLayout->addWidget(curLog);//先把前两句先输出
         nextAni();
 
     });//实现dfs
@@ -119,10 +124,10 @@ void MainGraph::estConnection()
         logShowClear();//清空scLayout布局内的所有元素
         view->clearAni();
         viewLog *headLog = new viewLog("开始Kruskal算法");
-        loglist.push_back(headLog);
+        emit logAdd(headLog);
         int ans = Kruskal();
         viewLog *ansLog = new viewLog(QString("最小生成树的值为%1").arg(ans));
-        loglist.push_back(ansLog);
+        emit logAdd(ansLog);
         viewLog *curLog = loglist.front();
         loglist.pop_front();
         scLayout->addWidget(curLog);
@@ -232,6 +237,12 @@ void MainGraph::init()
 {
     for(int i = 1;i<=view->getvexlist().size();++i){
         f[i] = i;
+        book[i] = false;
+    }
+    for(int i = 0;i<105;++i){
+        for(int j = 0;j<105;++j){
+            g[i][j] = oriG[i][j];
+        }
     }
 }
 
@@ -280,6 +291,71 @@ int MainGraph::Kruskal()
          }
      }
      return sum;
+}
+
+int MainGraph::Prim()
+{
+        init();
+        int res = 0;
+        dist[1] = 0;//把点1加入集合S，点1在集合S中，将它到集合的距离初始化为0
+        book[1] = true;//表示点1已经加入到了S集合中
+        for(int i = 1;i<=customVex::VexCount;++i){
+            dist[i] = INF;
+        }
+        for(int i = 2 ; i <= customVex::VexCount ;i++){
+
+            if(g[1][i] < dist[i]){
+                dist[i] = g[1][i];
+                for(auto line:view->getlinelist()){
+                    if(line->sourceNode()->nodenum == 1 && line->destNode()->nodenum == i){
+                        VisitingLine(line);
+                        qDebug()<<"hello";
+                        break;
+                    }
+                }
+            }
+        }
+        for(int i = 2 ; i <= customVex::VexCount ; i++)
+        {
+            int temp = INF;//初始化距离
+            int t = -1;//接下来去寻找离集合S最近的点加入到集合中，用t记录这个点的下标。
+            for(int j = 2 ; j <= customVex::VexCount; j++)
+            {
+                if(!book[j]&&dist[j]<temp)//如果这个点没有加入集合S，而且这个点到集合的距离小于temp就将下标赋给t
+                {
+                    temp = dist[j];//更新集合V到集合S的最小值
+                    t = j;//把点赋给t
+                }
+            }
+            if(t==-1){res = INF ; return res;}
+            //如果t==-1，意味着在集合V找不到边连向集合S，生成树构建失败，将res赋值正无穷表示构建失败，结束函数
+            book[t] = true;//如果找到了这个点，就把它加入集合S
+            res+=dist[t];//加上这个点到集合S的距离
+            for(auto line:view->getlinelist()){
+                if(line->sourceNode()->nodenum == i && line->destNode()->nodenum == t){
+                    VisitingLine(line);
+                    qDebug()<<"hello";
+                    break;
+                }
+            }
+            for(int j = 2 ; j <= customVex::VexCount; j++){
+                if(g[t][j] < dist[j]){
+                    dist[j] = g[t][j];
+                    for(auto line:view->getlinelist()){
+                        if(line->sourceNode()->nodenum == t && line->destNode()->nodenum == j){
+                            VisitingLine(line);
+                            qDebug()<<"hello";
+                            break;
+                        }
+                    }
+                }
+                else{
+
+                }
+            }//用新加入的点更新dist[]
+
+        }
+        return res;
 }
 
 void MainGraph::VisitingLine(customLine *curline)//访问线时候的函数
@@ -359,7 +435,8 @@ void MainGraph::readGraph()
         vs.readLine();//跳过结尾的换行符，贼坑，花费我大量时间找bug
     }
     vexfile.close();
-
+    memset(g, 0x3f, sizeof g);
+    memset(oriG, 0x3f, sizeof oriG);
     QString linefilename = username + "line.dat";
     QFile linefile(linefilename);
     linefile.open(QIODevice::ReadOnly|QIODevice::Text);
@@ -374,6 +451,10 @@ void MainGraph::readGraph()
             //这条线路是断开的
             continue;
         }
+        g[s][e] = w;
+        g[e][s] = w;
+        oriG[s][e] = w;
+        oriG[e][s] = w;
         customVex *sourceNode = nullptr;
         customVex *destNode = nullptr;
         for(auto tempvex : view->getvexlist()){
