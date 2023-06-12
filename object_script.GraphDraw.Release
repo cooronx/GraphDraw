@@ -1,16 +1,10 @@
-release/betteroption.o
 release/customicon.o
 release/customscene.o
 release/customview.o
 release/main.o
 release/maingraph.o
-release/mainwindow.o
-release/registerdialog.o
 release/qrc_icon.o
-release/moc_betteroption.o
 release/moc_customicon.o
 release/moc_customscene.o
 release/moc_customview.o
 release/moc_maingraph.o
-release/moc_mainwindow.o
-release/moc_registerdialog.o

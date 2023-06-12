@@ -1,6 +1,14 @@
 #include "maingraph.h"
 #include "ui_maingraph.h"
 
+int f[10005];
+
+
+
+bool cmp(const customLine* a,const customLine* b){
+    return a->getWeight() < b->getWeight();
+}
+
 MainGraph::MainGraph(QWidget *parent,QString name,int c) :
     QWidget(parent),
     username(name),
@@ -14,16 +22,18 @@ MainGraph::MainGraph(QWidget *parent,QString name,int c) :
     ui->GraphLayout->addWidget(view);
     closeBtn = new textButton("退出",ui->widget);
     saveBtn = new textButton("保存",ui->widget);
-    doBfsBtn = new textButton("广度优先搜索",ui->widget);
-    doDfsBtn = new textButton("深度优先搜索",ui->widget);
+    doKruskalBtn = new textButton("Kruskal算法",ui->widget);
+    doPrimBtn = new textButton("Prim算法",ui->widget);
     readBtn = new textButton("读入",ui->widget);
     clearBtn = new textButton("清空",ui->widget);
+    saveBtn->hide();
+
     QFont m_font("Corbel Light", 20);
     m_font.setPixelSize(30);//解决不同分辨率下字体显示不全的问题
     closeBtn->setFont(m_font);
     clearBtn->setFont(m_font);
-    doBfsBtn->setFont(m_font);
-    doDfsBtn->setFont(m_font);
+    doKruskalBtn->setFont(m_font);
+    doPrimBtn->setFont(m_font);
     readBtn->setFont(m_font);
     saveBtn->setFont(m_font);
     ui->verticalLayout_2->setAlignment(Qt::AlignVCenter);
@@ -52,12 +62,12 @@ MainGraph::MainGraph(QWidget *parent,QString name,int c) :
     //完成滚动区域的样式表的设置
     ui->verticalLayout_2->addWidget(saveBtn);
     ui->verticalLayout_2->addWidget(readBtn);
-    ui->verticalLayout_2->addWidget(doBfsBtn);
-    ui->verticalLayout_2->addWidget(doDfsBtn);
+    ui->verticalLayout_2->addWidget(doKruskalBtn);
+    ui->verticalLayout_2->addWidget(doPrimBtn);
     ui->verticalLayout_2->addWidget(clearBtn);
     ui->verticalLayout_2->addWidget(closeBtn);
-    ui->widget->setFixedSize(300,600);
-    this->setFixedSize(800,700);//按钮大小初始化
+    ui->widget->setFixedSize(500,600);
+    this->setFixedSize(1000,700);//按钮大小初始化
     readGraph();
     estConnection();//信号与槽连接
 }
@@ -77,7 +87,7 @@ void MainGraph::estConnection()
             close();//没有改动或改动已经被保存，直接退出
         }
     });//关闭
-    connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件
+    //connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件
     connect(readBtn,&textButton::clicked,this,[=]{readGraph();});//读取文件
     connect(clearBtn,&textButton::clicked,this,[=](){
        view->clearAll();
@@ -85,7 +95,7 @@ void MainGraph::estConnection()
     });//清空
 
     //update: 记得在每次循环开始前，清空一下整个动画序列，清空一下遍历的记录
-    connect(doDfsBtn,&textButton::clicked,this,[=]{
+    connect(doPrimBtn,&textButton::clicked,this,[=]{
         loglist.clear();
         logShowClear();//清空scLayout布局内的所有元素
         view->clearAni();
@@ -103,23 +113,24 @@ void MainGraph::estConnection()
         nextAni();
 
     });//实现dfs
-    connect(doBfsBtn,&textButton::clicked,this,[=]{
+    //实现Kruskal算法
+    connect(doKruskalBtn,&textButton::clicked,this,[=]{
         loglist.clear();
         logShowClear();//清空scLayout布局内的所有元素
         view->clearAni();
-        view->getCurrentSel()->setVisited(true);
-        viewLog *log = new viewLog(QString("在%1号点执行广度优先搜索").arg(view->getCurrentSel()->getNodeNum()));
-        emit logAdd(log);
-        GraphBfs(view->getCurrentSel());
-        for(auto tempvex : view->getvexlist()){
-            tempvex->setVisited(false);
-        }
-        view->setGraphvisited(true);//标记整张图已经被遍历过
+        viewLog *headLog = new viewLog("开始Kruskal算法");
+        loglist.push_back(headLog);
+        int ans = Kruskal();
+        viewLog *ansLog = new viewLog(QString("最小生成树的值为%1").arg(ans));
+        loglist.push_back(ansLog);
         viewLog *curLog = loglist.front();
         loglist.pop_front();
-        scLayout->addWidget(curLog);//先把第一句先输出
+        scLayout->addWidget(curLog);
+        curLog = loglist.front();
+        loglist.pop_front();
+        scLayout->addWidget(curLog);//先把前两句先输出
         nextAni();
-    });//实现bfs
+    });
     connect(this,&MainGraph::logAdd,this,[=](viewLog *text){
         loglist.push_back(text);
     });//将刚刚遍历的日志输入进去
@@ -217,6 +228,28 @@ void MainGraph::mouseReleaseEvent(QMouseEvent *event)
     m_mousepressed = false;
 }
 
+void MainGraph::init()
+{
+    for(int i = 1;i<=view->getvexlist().size();++i){
+        f[i] = i;
+    }
+}
+
+int MainGraph::find(int x)
+{
+    if(x != f[x])f[x] = find(f[x]);
+    return f[x];
+}
+
+void MainGraph::merge(int x, int y)
+{
+    int fx = find(x);
+    int fy = find(y);
+    if(fx != fy){
+        f[fy] = fx;
+    }
+}
+
 
 void MainGraph::GraphDfs(customVex *startvex)
 {
@@ -231,21 +264,22 @@ void MainGraph::GraphDfs(customVex *startvex)
     }
 }
 
-void MainGraph::GraphBfs(customVex *startvex)
+int MainGraph::Kruskal()
 {
-     QQueue <customVex*> bfsq;
-     bfsq.push_back(startvex);
-     while(!bfsq.empty()){
-         customVex *head = bfsq.head();
-         bfsq.pop_front();
-         for(auto l : head->edgeList()){
-             if(!l->destNode()->getVisited()){
-                 VisitingLine(l);
-                 l->destNode()->setVisited(true);
-                 bfsq.push_back(l->destNode());
-             }
+    int sum = 0;
+     init();
+     std::sort(view->getlinelist().begin(),view->getlinelist().end(),cmp);
+     for(auto line:view->getlinelist()){
+         if(find(line->sourceNode()->nodenum) ==  find(line->destNode()->nodenum)){
+             continue;
+         }
+         else{
+             VisitingLine(line);
+             merge(line->sourceNode()->nodenum,line->destNode()->nodenum);
+             sum += line->getWeight();
          }
      }
+     return sum;
 }
 
 void MainGraph::VisitingLine(customLine *curline)//访问线时候的函数
@@ -260,7 +294,8 @@ void MainGraph::VisitingLine(customLine *curline)//访问线时候的函数
         curline->setLengthrate(curProgress);
         curline->drawline();
     });
-    viewLog *log = new viewLog(QString("从%1号点到%2号点").arg(curline->sourceNode()->getNodeNum()).arg(curline->destNode()->getNodeNum()));
+    viewLog *log = new viewLog(QString("选择从%1号点到%2号点这条边，权值为%3").arg(curline->sourceNode()->getNodeNum()).arg(curline->destNode()->getNodeNum())
+                               .arg(curline->getWeight()));
     emit newAni(accessEffect);
     emit logAdd(log);
 }
@@ -333,8 +368,12 @@ void MainGraph::readGraph()
     tline = ls.readLine().toInt();
     view->getlinelist().clear();
     for(int i = 1; i<=tline; ++i){
-        int s,e;
-        ls >> s >> e;//读入起始点和终点编号
+        int s,e,w;//读入边权值
+        ls >> s >> e >> w;//读入起始点和终点编号
+        if(w == 0){
+            //这条线路是断开的
+            continue;
+        }
         customVex *sourceNode = nullptr;
         customVex *destNode = nullptr;
         for(auto tempvex : view->getvexlist()){
@@ -345,13 +384,13 @@ void MainGraph::readGraph()
                 destNode = tempvex;
             }
         }
-        customLine *newline = new customLine(sourceNode,destNode);
+        customLine *newline = new customLine(sourceNode,destNode,w);
+        customLine *newline2 = new customLine(destNode,sourceNode,w);
         view->scene()->addItem(newline);
+        view->scene()->addItem(newline2);
         view->addtoLinelist(newline);
         vs.readLine();//跳过结尾的换行符，贼坑，花费我大量时间找bug
     }
-
-
 }
 
 

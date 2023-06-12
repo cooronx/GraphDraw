@@ -31,8 +31,8 @@ public:
     QPoint m_curmousepos;
     textButton *closeBtn = nullptr;
     textButton *saveBtn = nullptr;
-    textButton *doBfsBtn = nullptr;
-    textButton *doDfsBtn = nullptr;
+    textButton *doKruskalBtn = nullptr;
+    textButton *doPrimBtn = nullptr;
     textButton *readBtn = nullptr;
     textButton *clearBtn = nullptr;
     QVBoxLayout *scLayout = nullptr;
@@ -53,13 +53,16 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
 
-
+private:
+    void init();//在这里初始化并查集
+    int find(int x);//并查集找所属
+    void merge(int x,int y);//合并两个节点
 signals:
     void newAni(QTimeLine*);
     void logAdd(viewLog*);
 public slots:
     void GraphDfs(customVex *startvex);
-    void GraphBfs(customVex *startvex);
+    int Kruskal();
     void VisitingLine(customLine *);//线的动画
     void saveGraph();//保存文件
     void readGraph();//读入文件

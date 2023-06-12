@@ -119,25 +119,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
         }
     }
 
-    if(event->button() == Qt::LeftButton && doubleClick){//画线成功了，现在要连线
-        QPoint temp_pos = event->pos();
-        QTransform trans;
-        //返回一个指向当前item的指针
-        customVex *cur_sel = dynamic_cast<customVex*>(this->scene()->itemAt(mapToScene(temp_pos),trans));
-        if(cur_sel!=nullptr){//选择到了一个点上
-            qDebug()<<cur_sel->pos()<<endl;
-            customLine *newline = new customLine(selectitem,cur_sel);
-            this->setCurrentSel(cur_sel);
-            this->scene()->addItem(newline);//记住新建完成以后要即时清除
-            this->addtoLinelist(newline);//新建的边加入边集
-            clearDraw();
-            doubleClick = false;
-        }
-        else{//选择到了空的地方
-            clearDraw();
-            doubleClick = false;
-        }
-    }
+
     if(event->button() == Qt::MiddleButton){
         pressed = true;
         last_pos = mapToScene(event->pos());
@@ -264,10 +246,11 @@ void customVex::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 
 //自定义线的实现
 
-customLine::customLine(customVex *sourceNode, customVex *destNode,int type):
+customLine::customLine(customVex *sourceNode, customVex *destNode,int weight,int type):
     sourceVex(sourceNode),
     destVex(destNode),
-    arrowSize(10)
+    arrowSize(10),
+    weight(weight)
 {
     curPen.setWidth(5);
     curPen.setStyle(Qt::SolidLine);
@@ -290,7 +273,6 @@ void customLine::adjust()//完成拖动时候的线的变化
     prepareGeometryChange();
 
     if (length > qreal(20.)) {//如果长度合理（也就是大于半径）
-        qDebug()<<line.dx()<<endl;
         QPointF edgeOffset((line.dx() * 10) / length, (line.dy() * 10) / length);
         //算出应该补偿多少，不然就边就会指到中心处去
         //这里计算建议最好动手画一下，其实说白了就是line.dx()/length是那个角的cos值，10是半径，也就是算出x需要调整的值
@@ -317,7 +299,7 @@ void customLine::drawline()
         arrow->scene()->removeItem(arrow);
         arrow = nullptr;
     }
-    drawarr();
+    //drawarr();
 }
 
 void customLine::setLengthrate(qreal r)
@@ -353,8 +335,12 @@ void customLine::drawarr()
 
 void customLine::del()//删除动画边
 {
+    if(line1 != nullptr){
     this->scene()->removeItem(line1);
+    }
+    if(arrow != nullptr){
     this->scene()->removeItem(arrow);
+    }
     line1 = nullptr;
     arrow = nullptr;
 }
@@ -396,8 +382,8 @@ void customLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
         painter->setBrush(Qt::red);
     }
     else painter->setBrush(Qt::black);
-    painter->drawPolygon(QPolygonF() << line.p1());
-    painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
+    //painter->drawPolygon(QPolygonF() << line.p1());
+    //painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
 }
 
 viewLog::viewLog(QString log, QWidget *parent) :

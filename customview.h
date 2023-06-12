@@ -121,7 +121,7 @@ class customLine : public QObject,public QGraphicsLineItem{
     //2022.11.23 提供一个新的属性 length
 
 public:
-    customLine(customVex *sourceNode, customVex *destNode,int type = 0);
+    customLine(customVex *sourceNode, customVex *destNode,int weight,int type = 0);
     customVex *sourceNode() const{return sourceVex;}
     customVex *destNode() const{return destVex;}
     void adjust();
@@ -129,6 +129,8 @@ public:
     void setLengthrate(qreal r = 1);//用这个动画来控制线长度大小的变化
     void drawarr();
     void del();//删除动画边
+    int getWeight()const{return this->weight;}
+    //2023.6.12 根据weight值排序
 protected:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -147,6 +149,7 @@ private:
     qreal angle = 0;
     QPointF center;
     QPointF sP, eP, dP;
+    int weight;
 
 };
 

@@ -17,28 +17,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    betteroption.cpp \
     customicon.cpp \
     customscene.cpp \
     customview.cpp \
     main.cpp \
     maingraph.cpp \
-    mainwindow.cpp \
-    registerdialog.cpp
 
 HEADERS += \
-    betteroption.h \
     customicon.h \
     customscene.h \
     customview.h \
     maingraph.h \
-    mainwindow.h \
-    registerdialog.h
 
 FORMS += \
     betteroption.ui \
     maingraph.ui \
-    mainwindow.ui \
     registerdialog.ui
 
 # Default rules for deployment.
