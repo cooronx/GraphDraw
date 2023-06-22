@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <cmath>
+#include <QInputDialog>
 #include <QVector>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -60,7 +61,9 @@ private:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
-    void resizeEvent(QResizeEvent *event){this->setSceneRect(-this->width()/2,-this->height()/2,
+    void resizeEvent(QResizeEvent *event) override {
+        Q_UNUSED(event)
+        this->setSceneRect(-this->width()/2,-this->height()/2,
                                                              this->width(),this->height());}
     //这个函数前俩参数是设置这个scene的坐标源点，而scene里面的item都是依据这个坐标来设置的，如果此时我把源点设置在view的中央，那即使view变化，这个相对坐标系也不会变化
     //后俩坐标是可视区域的长宽
@@ -87,7 +90,7 @@ public:
 //请以后设计类的时候，读写函数都要设计 2022.11.19
 public:
     customVex(QPointF,int state);
-    ~customVex();
+    ~customVex() override;
     customLine* getnextline(){return this->nextLine;}
     void setVisited(bool state){visited = state;}
     void setNodeNum(int x){nodenum = x;}
@@ -121,7 +124,7 @@ class customLine : public QObject,public QGraphicsLineItem{
     //2022.11.23 提供一个新的属性 length
 
 public:
-    customLine(customVex *sourceNode, customVex *destNode,int type = 0);
+    customLine(customVex *sourceNode, customVex *destNode,bool isShow = true,int type = 0);
     customVex *sourceNode() const{return sourceVex;}
     customVex *destNode() const{return destVex;}
     void adjust();
@@ -129,10 +132,16 @@ public:
     void setLengthrate(qreal r = 1);//用这个动画来控制线长度大小的变化
     void drawarr();
     void del();//删除动画边
+    int getWeight() const {
+        return this->weight;
+    }
+    void setWeight(int w){
+        this->weight = w;
+    }
 protected:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 private:
     QGraphicsPathItem *arrow = nullptr;
     QPen curPen;//遍历时候用的笔
@@ -147,29 +156,8 @@ private:
     qreal angle = 0;
     QPointF center;
     QPointF sP, eP, dP;
-
+    int weight = 0;
 };
-
-
-/*class testLine : public customLine{
-    Q_OBJECT
-    Q_PROPERTY(qreal len READ len WRITE setLen NOTIFY lenChanged)
-public:
-    explicit testLine(customVex*,customVex*);
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-    qreal len(){return this->m_len;}
-    void setLen(qreal x){m_len = x;prepareGeometryChange();this->update();}
-private:
-    qreal m_len = 1.0;
-    customVex *sourceVex, *destVex;
-    qreal arrowSize;
-    QPointF sourcePoint;
-    QPointF destPoint;
-signals:
-    void lenChanged();
-};*/
-
-
 
 
 

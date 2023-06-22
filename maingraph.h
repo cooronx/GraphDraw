@@ -10,6 +10,7 @@
 #include <QSequentialAnimationGroup>
 #include <QQueue>
 #include <QMessageBox>
+#include <QFileDialog>
 #include "customview.h"
 #include "customicon.h"
 
@@ -35,6 +36,8 @@ public:
     textButton *doDfsBtn = nullptr;
     textButton *readBtn = nullptr;
     textButton *clearBtn = nullptr;
+    textButton *doPrimBtn = nullptr;
+    textButton *doKruskalBtn = nullptr;
     QVBoxLayout *scLayout = nullptr;
     int themecolor = 2;
     QVector <viewLog*> loglist;
@@ -47,6 +50,11 @@ public:
     void nextAni();//线性动画遍历
     void readyforClose();
     void logShowClear();
+    int Prim();
+    int Kruskal();
+    void merge(int x, int y);
+    void init();
+    int find(int x);
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -61,11 +69,12 @@ public slots:
     void GraphDfs(customVex *startvex);
     void GraphBfs(customVex *startvex);
     void VisitingLine(customLine *);//线的动画
-    void saveGraph();//保存文件
-    void readGraph();//读入文件
+    void saveGraph(QString filename);//保存文件
+    void readGraph(QString filename);//读入文件
     void addAni(QTimeLine*);
 private:
     Ui::MainGraph *ui;
+    void drawAxis();
 };
 
 #endif // MAINGRAPH_H

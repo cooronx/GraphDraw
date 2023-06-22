@@ -269,6 +269,8 @@ debug/moc_betteroption.cpp: betteroption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
@@ -785,6 +787,9 @@ debug/moc_maingraph.cpp: maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMessageBox \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVector \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsView \
@@ -980,6 +985,8 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		registerdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
 		customview.h \
@@ -1007,8 +1014,6 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
@@ -1287,6 +1292,8 @@ debug/betteroption.o: betteroption.cpp betteroption.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qvariantanimation.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qeasingcurve.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractanimation.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		customicon.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QObject \
 		../QTNEW/5.13.2/mingw73_32/include/QtGui/QEnterEvent \
@@ -1833,6 +1840,8 @@ debug/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		registerdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
 		customview.h \
@@ -1860,8 +1869,6 @@ debug/main.o: main.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \
@@ -2005,6 +2012,9 @@ debug/maingraph.o: maingraph.cpp maingraph.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qanimationgroup.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QQueue \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qqueue.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QMessageBox \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
+		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		customview.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QVector \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QGraphicsView \
@@ -2209,6 +2219,8 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qmessagebox.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/qdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QFile \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
+		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		registerdialog.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QDialog \
 		customview.h \
@@ -2236,8 +2248,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/qabstractitemmodel.h \
 		customscene.h \
 		maingraph.h \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/QTime \
-		../QTNEW/5.13.2/mingw73_32/include/QtCore/qdatetime.h \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QScrollArea \
 		../QTNEW/5.13.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		../QTNEW/5.13.2/mingw73_32/include/QtCore/QSequentialAnimationGroup \

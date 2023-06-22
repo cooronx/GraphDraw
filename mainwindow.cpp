@@ -55,7 +55,7 @@ void MainWindow::init(){
                                     "QPushButton:pressed{background-color: rgb(17,171,164);}");//pressed
     //这里就是标题栏
     QFont fontTitle("Corbel Light", 20);
-    QLabel *titlelabel = new QLabel("START");
+    QLabel *titlelabel = new QLabel("以太网布网检测模拟系统");
     fontTitle.setPixelSize(30);//解决不同分辨率下字体显示不全的问题
     titlelabel->setFont(fontTitle);
     ui->titleLayout->insertWidget(0,titlelabel);
@@ -181,14 +181,12 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event){
 void MainWindow::mousePressEvent(QMouseEvent *event){
     if(event->button() == Qt::LeftButton){
         m_mousepressed = true;
-        qDebug()<<event->globalPos();
         m_curmousepos = event->globalPos() - this->pos();//相当于鼠标和部件边框之间差了多少
-        qDebug()<<m_curmousepos;
         event->accept();
     }
 }
 void MainWindow::mouseReleaseEvent(QMouseEvent *event){
-    Q_UNUSED(event);
+    Q_UNUSED(event)
     m_mousepressed = false;
 }
 
@@ -218,7 +216,6 @@ void MainWindow::on_maxButton_clicked()
 void MainWindow::on_loginBtn_clicked()
 {
     if(checklogin()){
-        qDebug()<<"准确对咯"<<endl;
         MainGraph *Maingraph = new MainGraph(nullptr,ui->actEdit->text(),themecolor);
         Maingraph->show();
         this->setVisible(false);

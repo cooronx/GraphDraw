@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainGraph_t {
-    QByteArrayData data[15];
-    char stringdata0[135];
+    QByteArrayData data[16];
+    char stringdata0[144];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,14 +45,15 @@ QT_MOC_LITERAL(9, 74, 8), // "GraphBfs"
 QT_MOC_LITERAL(10, 83, 12), // "VisitingLine"
 QT_MOC_LITERAL(11, 96, 11), // "customLine*"
 QT_MOC_LITERAL(12, 108, 9), // "saveGraph"
-QT_MOC_LITERAL(13, 118, 9), // "readGraph"
-QT_MOC_LITERAL(14, 128, 6) // "addAni"
+QT_MOC_LITERAL(13, 118, 8), // "filename"
+QT_MOC_LITERAL(14, 127, 9), // "readGraph"
+QT_MOC_LITERAL(15, 137, 6) // "addAni"
 
     },
     "MainGraph\0newAni\0\0QTimeLine*\0logAdd\0"
     "viewLog*\0GraphDfs\0customVex*\0startvex\0"
     "GraphBfs\0VisitingLine\0customLine*\0"
-    "saveGraph\0readGraph\0addAni"
+    "saveGraph\0filename\0readGraph\0addAni"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,9 +78,9 @@ static const uint qt_meta_data_MainGraph[] = {
        6,    1,   60,    2, 0x0a /* Public */,
        9,    1,   63,    2, 0x0a /* Public */,
       10,    1,   66,    2, 0x0a /* Public */,
-      12,    0,   69,    2, 0x0a /* Public */,
-      13,    0,   70,    2, 0x0a /* Public */,
-      14,    1,   71,    2, 0x0a /* Public */,
+      12,    1,   69,    2, 0x0a /* Public */,
+      14,    1,   72,    2, 0x0a /* Public */,
+      15,    1,   75,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -89,8 +90,8 @@ static const uint qt_meta_data_MainGraph[] = {
     QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Void, 0x80000000 | 11,    2,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   13,
+    QMetaType::Void, QMetaType::QString,   13,
     QMetaType::Void, 0x80000000 | 3,    2,
 
        0        // eod
@@ -107,8 +108,8 @@ void MainGraph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 2: _t->GraphDfs((*reinterpret_cast< customVex*(*)>(_a[1]))); break;
         case 3: _t->GraphBfs((*reinterpret_cast< customVex*(*)>(_a[1]))); break;
         case 4: _t->VisitingLine((*reinterpret_cast< customLine*(*)>(_a[1]))); break;
-        case 5: _t->saveGraph(); break;
-        case 6: _t->readGraph(); break;
+        case 5: _t->saveGraph((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 6: _t->readGraph((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 7: _t->addAni((*reinterpret_cast< QTimeLine*(*)>(_a[1]))); break;
         default: ;
         }
