@@ -84,6 +84,7 @@ public:
     QVector <customLine*> OutEdgeList;//用出边边集的第一条边的终点作为后继
     int nodenum = 0;
     bool visited = false;
+    QPixmap pic;
 //请以后设计类的时候，读写函数都要设计 2022.11.19
 public:
     customVex(QPointF,int state);

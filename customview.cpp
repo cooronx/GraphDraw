@@ -76,7 +76,7 @@ void CustomView::mouseDoubleClickEvent(QMouseEvent *event)
 void CustomView::wheelEvent(QWheelEvent *event)//实现滚轮对其缩放
 {
     QPointF angle = event->angleDelta();//angleDelta()后面那个值y>0就是向前滚
-    qDebug()<<event->angleDelta()<<endl;
+    //qDebug()<<event->angleDelta()<<endl;
     if(angle.y()>0){
         this->scale(1.1,1.1);
 
@@ -92,6 +92,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
     //这个地方应该写dynamic_cast，因为这个bug程序崩溃了好久都没找出来,c++主打的就是折磨人
     //to do，看一下dynamic_cast和static_cast的区别
     changed = true;
+
     if(event->button() == Qt::LeftButton && !doubleClick){//处理新建的点项目
         //bool in = true;
         if(Graphvisited){
@@ -111,7 +112,7 @@ void CustomView::mousePressEvent(QMouseEvent *event)
             QGraphicsSimpleTextItem *showtext = new QGraphicsSimpleTextItem(vex);
             showtext->setText("V"+QString("%1").arg(customVex::VexCount));//给每个点打上标号
             vex->setNodeNum(customVex::VexCount);
-            showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(10,10));
+            showtext->setPos(showtext->mapToItem(vex,0,0)+QPointF(50,10));
             setCurrentSel(vex);
             this->scene()->addItem(vex);
             //新建的点加入点集
@@ -168,6 +169,8 @@ customVex::customVex(QPointF coor,int state)
     setFlag(ItemIsSelectable);
     setAcceptHoverEvents(true);
     ++VexCount;
+    this->pic.load(":/computer.png");
+    this->pic = this->pic.scaled(40,40);
     setZValue(-1);
 }
 
@@ -199,7 +202,7 @@ QVariant customVex::itemChange(QGraphicsItem::GraphicsItemChange change, const Q
 
 void customVex::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setPen(Qt::NoPen);
+    /*painter->setPen(Qt::NoPen);
     painter->setBrush(Qt::darkGray);
     painter->drawEllipse(-7, -7, 20, 20);
 
@@ -215,7 +218,8 @@ void customVex::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     }
     painter->setBrush(gradient);
     painter->setPen(QPen(Qt::black, 0));
-    painter->drawEllipse(-10, -10, 20, 20);
+    painter->drawEllipse(-10, -10, 20, 20);*/
+    painter->drawPixmap(0,0,this->pic);
 }
 
 QRectF customVex::boundingRect() const
@@ -268,7 +272,7 @@ customLine::customLine(customVex *sourceNode, customVex *destNode,int weight,int
 void customLine::adjust()//完成拖动时候的线的变化
 {
 
-    QLineF line(mapFromItem(sourceVex, 0, 0), mapFromItem(destVex, 0, 0));//准备一条移动过后的线
+    QLineF line(mapFromItem(sourceVex, 30, 20), mapFromItem(destVex, 30, 20));//准备一条移动过后的线
     qreal length = line.length();
     prepareGeometryChange();
 
@@ -291,7 +295,7 @@ void customLine::drawline()
     }
     QGraphicsLineItem *newLine = new QGraphicsLineItem(sP.x(), sP.y(), eP.x(), eP.y());
     newLine->setPen(curPen);
-    newLine->setZValue(this->zValue() - 1);
+    newLine->setZValue(-10);
     this->scene()->addItem(newLine);
     line1 = newLine;
 
@@ -308,8 +312,8 @@ void customLine::setLengthrate(qreal r)
     eP = destPoint;
     dP = eP - sP;
     angle = atan2(dP.y(), dP.x());
-    eP -= QPointF(5 * cos(angle), 5 * sin(angle));
-    sP += QPointF(5 * cos(angle), 5 * sin(angle));
+    eP -= QPointF(10 * cos(angle), 10 * sin(angle));
+    sP += QPointF(10 * cos(angle), 10 * sin(angle));
     dP = (eP - sP) * r;
     eP = sP + dP;
 }
@@ -348,7 +352,7 @@ void customLine::del()//删除动画边
 QRectF customLine::boundingRect() const
 {
     qreal penWidth = 1;
-    qreal extra = (penWidth + arrowSize) / 2.0;
+    qreal extra = 0;
 
     return QRectF(sourcePoint, QSizeF(destPoint.x() - sourcePoint.x(),
                                       destPoint.y() - sourcePoint.y()))
@@ -369,7 +373,7 @@ void customLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     }
     else painter->setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     painter->drawLine(line);
-
+    painter->drawText(line.center(),QString("权值为%1").arg(this->weight));
     // 画线很简单，重点是画箭头有点难
     double angle = std::atan2(-line.dy(), line.dx());
 
