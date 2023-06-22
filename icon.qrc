@@ -6,5 +6,6 @@
         <file>back.png</file>
         <file>label.qss</file>
         <file>lineEdit.qss</file>
+        <file>computer.png</file>
     </qresource>
 </RCC>

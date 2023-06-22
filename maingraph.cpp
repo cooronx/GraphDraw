@@ -85,12 +85,7 @@ MainGraph::~MainGraph()
 void MainGraph::estConnection()
 {
     connect(closeBtn,&textButton::clicked,this,[=]{
-        if(view->getChanged()){
-            readyforClose();
-        }
-        else{
-            close();//没有改动或改动已经被保存，直接退出
-        }
+        close();
     });//关闭
     //connect(saveBtn,&textButton::clicked,this,[=]{saveGraph();});//保存文件
     connect(readBtn,&textButton::clicked,this,[=]{readGraph();});//读取文件
@@ -115,8 +110,9 @@ void MainGraph::estConnection()
         curLog = loglist.front();
         loglist.pop_front();
         scLayout->addWidget(curLog);//先把前两句先输出
+        update();
         nextAni();
-
+        update();
     });//实现dfs
     //实现Kruskal算法
     connect(doKruskalBtn,&textButton::clicked,this,[=]{
@@ -134,7 +130,9 @@ void MainGraph::estConnection()
         curLog = loglist.front();
         loglist.pop_front();
         scLayout->addWidget(curLog);//先把前两句先输出
+        update();
         nextAni();
+        update();
     });
     connect(this,&MainGraph::logAdd,this,[=](viewLog *text){
         loglist.push_back(text);
@@ -184,12 +182,12 @@ void MainGraph::readyforClose()
 void MainGraph::logShowClear()
 {
     QLayoutItem *child;
-     while ((child = scLayout->takeAt(0)) != 0)
+     while ((child = scLayout->takeAt(0)) != nullptr)
      {
             //setParent为NULL，防止删除之后界面不消失
             if(child->widget())
             {
-                child->widget()->setParent(NULL);
+                child->widget()->setParent(nullptr);
             }
 
             delete child;
@@ -229,7 +227,7 @@ void MainGraph::mousePressEvent(QMouseEvent *event)
 
 void MainGraph::mouseReleaseEvent(QMouseEvent *event)
 {
-    Q_UNUSED(event);
+    Q_UNUSED(event)
     m_mousepressed = false;
 }
 
@@ -278,17 +276,29 @@ void MainGraph::GraphDfs(customVex *startvex)
 int MainGraph::Kruskal()
 {
     int sum = 0;
+    int cnt = 0;
      init();
      std::sort(view->getlinelist().begin(),view->getlinelist().end(),cmp);
-     for(auto line:view->getlinelist()){
+     for(auto& line:view->getlinelist()){
          if(find(line->sourceNode()->nodenum) ==  find(line->destNode()->nodenum)){
              continue;
          }
          else{
+             ++cnt;
              VisitingLine(line);
              merge(line->sourceNode()->nodenum,line->destNode()->nodenum);
              sum += line->getWeight();
          }
+     }
+     if(cnt != customVex::VexCount-1){
+         viewLog *tempLog = new viewLog(QString("该网络出现故障，无法联通"));
+         emit logAdd(tempLog);
+         QMessageBox msgBox;
+         msgBox.setText("生成网络中出现了问题");
+         msgBox.setInformativeText("该网络无法正确联通");
+         msgBox.setStandardButtons(QMessageBox::Ok);
+         msgBox.setButtonText(QMessageBox::Ok,"确定");
+         msgBox.exec();
      }
      return sum;
 }
@@ -327,7 +337,18 @@ int MainGraph::Prim()
                     t = j;//把点赋给t
                 }
             }
-            if(t==-1){res = INF ; return res;}
+            if(t==-1){
+                res = INF ;
+                viewLog *tempLog = new viewLog(QString("该网络出现故障，无法联通"));
+                emit logAdd(tempLog);
+                QMessageBox msgBox;
+                msgBox.setText("生成网络中出现了问题");
+                msgBox.setInformativeText("该网络无法正确联通");
+                msgBox.setStandardButtons(QMessageBox::Ok);
+                msgBox.setButtonText(QMessageBox::Ok,"确定");
+                msgBox.exec();
+                return res;
+            }
             //如果t==-1，意味着在集合V找不到边连向集合S，生成树构建失败，将res赋值正无穷表示构建失败，结束函数
             book[t] = true;//如果找到了这个点，就把它加入集合S
             res+=dist[t];//加上这个点到集合S的距离
@@ -370,7 +391,7 @@ void MainGraph::VisitingLine(customLine *curline)//访问线时候的函数
         curline->setLengthrate(curProgress);
         curline->drawline();
     });
-    viewLog *log = new viewLog(QString("选择从%1号点到%2号点这条边，权值为%3").arg(curline->sourceNode()->getNodeNum()).arg(curline->destNode()->getNodeNum())
+    viewLog *log = new viewLog(QString("遍历从%1号点到%2号点这条边，权值为%3").arg(curline->sourceNode()->getNodeNum()).arg(curline->destNode()->getNodeNum())
                                .arg(curline->getWeight()));
     emit newAni(accessEffect);
     emit logAdd(log);
@@ -428,7 +449,7 @@ void MainGraph::readGraph()
         QGraphicsSimpleTextItem *showtext = new QGraphicsSimpleTextItem(newvex);
         customVex::VexCount = tvex;
         showtext->setText("V"+QString("%1").arg(curcount));//给每个点打上标号
-        showtext->setPos(showtext->mapToItem(newvex,0,0)+QPointF(10,10));
+        showtext->setPos(showtext->mapToItem(newvex,0,0)+QPointF(50,10));
         newvex->setNodeNum(curcount);//记得给一下每个点编号，坑死了
         view->scene()->addItem(newvex);
         view->addtoVexlist(newvex);
@@ -469,7 +490,9 @@ void MainGraph::readGraph()
         customLine *newline2 = new customLine(destNode,sourceNode,w);
         view->scene()->addItem(newline);
         view->scene()->addItem(newline2);
+        //newline2->setVisible(false);
         view->addtoLinelist(newline);
+        view->addtoLinelist(newline2);
         vs.readLine();//跳过结尾的换行符，贼坑，花费我大量时间找bug
     }
 }
